@@ -42,29 +42,29 @@ alpha.update({'(command | cod) alt shift %s' % k: Key('cmd-alt-shift-%s' % v) fo
 alpha.update({'alt %s' % k: Key('alt-%s' % v) for k, v in keys})
 alpha.update({'alt shift %s' % k: Key('alt-%s' % v) for k, v in keys})
 
-numerals = {
-    'ten': '10',
-    'eleven': '11',
-    'twelve': '12',
-    'thirteen': '13',
-    'fourteen': '14',
-    'fifteen': '15',
-    # 'sixteen': '16',
-    # 'seventeen': '17',
-    # 'eighteen': '18',
-    # 'nineteen': '19',
-    # 'twenty': '20',
-    # 'thirty': '30',
-    # 'forty': '40',
-    'forty two': '42',
-    # 'fifty': '50',
-    # 'sixty': '60',
-    # 'seventy': '70',
-    # 'eighty': '80',
-    # 'ninety': '90',
-}
-
-alpha.update(numerals)
+# numerals = {
+#     'ten': '10',
+#     'eleven': '11',
+#     'twelve': '12',
+#     'thirteen': '13',
+#     'fourteen': '14',
+#     'fifteen': '15',
+#     # 'sixteen': '16',
+#     # 'seventeen': '17',
+#     # 'eighteen': '18',
+#     # 'nineteen': '19',
+#     # 'twenty': '20',
+#     # 'thirty': '30',
+#     # 'forty': '40',
+#     'forty two': '42',
+#     # 'fifty': '50',
+#     # 'sixty': '60',
+#     # 'seventy': '70',
+#     # 'eighty': '80',
+#     # 'ninety': '90',
+# }
+#
+# alpha.update(numerals)
 
 # cleans up some Dragon output from <dgndictation>
 mapping = {
@@ -172,9 +172,9 @@ keymap.update({
     'say <dgndictation> [over]': text,
 
     'cap <dgndictation> [over]': sentence_text,
-    # 'comma <dgndictation> [over]': [', ', text],
-    # 'period <dgndictation> [over]': ['. ', sentence_text],
-    # 'more <dgndictation> [over]': [' ', text],
+    'calm <dgndictation> [over]': [', ', text],
+    'period <dgndictation> [over]': ['. ', sentence_text],
+    'more <dgndictation> [over]': [' ', text],
     'word <dgnwords>': word,
 
     '(%s)+ [<dgndictation>]' % (' | '.join(formatters)): FormatText,
