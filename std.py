@@ -3,13 +3,16 @@ from talon import ctrl, clip
 from talon_init import TALON_HOME, TALON_PLUGINS, TALON_USER
 import string
 
-alpha_alt = 'air bat cap drum each fine gust harp sit jury crunch look made near odd pit quench red sun trap urge vest whale plex yank zip'.split()
+# alpha_alt = 'air bat cap drum each fine gust harp sit jury crunch look made near odd pit quench red sun trap urge vest whale plex yank zip'.split()
+
+alpha_alt = 'arch bravo char dilbert echo fox golf hotel ice juliet kilo lug mike nerb ork pooch queen romeo souk tango unk victor whiskey x-ray yankee zulu'.split()
+
 ###
 alnum = list(zip(alpha_alt, string.ascii_lowercase)) + [(str(i), str(i)) for i in range(0, 10)]
 
 alpha = {}
 alpha.update(dict(alnum))
-alpha.update({'ship %s' % word: letter for word, letter in zip(alpha_alt, string.ascii_uppercase)})
+alpha.update({'sky %s' % word: letter for word, letter in zip(alpha_alt, string.ascii_uppercase)})
 
 # modifier key mappings
 fkeys = [(f'F {i}', f'f{i}') for i in range(1, 13)]
@@ -25,8 +28,8 @@ keys += [
     ('slash', '/'),
     ('(semi | semicolon)', ';'),
     ('quote', "'"),
-    ('[left] square', '['),
-    ('(right | are) square', ']'),
+    ('lack', '['),
+    ('rack', ']'),
     ('backslash', '\\'),
     ('minus', '-'),
     ('equals', '='),
@@ -35,11 +38,34 @@ alpha.update({word: Key(key) for word, key in fkeys})
 alpha.update({'control %s' % k: Key('ctrl-%s' % v) for k, v in keys})
 alpha.update({'control shift %s' % k: Key('ctrl-shift-%s' % v) for k, v in keys})
 alpha.update({'control alt %s' % k: Key('ctrl-alt-%s' % v) for k, v in keys})
-alpha.update({'command %s' % k: Key('cmd-%s' % v) for k, v in keys})
-alpha.update({'command shift %s' % k: Key('cmd-shift-%s' % v) for k, v in keys})
-alpha.update({'command alt shift %s' % k: Key('cmd-alt-shift-%s' % v) for k, v in keys})
+alpha.update({'(command | cod) %s' % k: Key('cmd-%s' % v) for k, v in keys})
+alpha.update({'(command | cod) shift %s' % k: Key('cmd-shift-%s' % v) for k, v in keys})
+alpha.update({'(command | cod) alt shift %s' % k: Key('cmd-alt-shift-%s' % v) for k, v in keys})
 alpha.update({'alt %s' % k: Key('alt-%s' % v) for k, v in keys})
 alpha.update({'alt shift %s' % k: Key('alt-%s' % v) for k, v in keys})
+
+numerals = {
+    'ten': '10',
+    'eleven': '11',
+    'twelve': '12',
+    'thirteen': '13',
+    'fourteen': '14',
+    'fifteen': '15',
+    'sixteen': '16',
+    'seventeen': '17',
+    'eighteen': '18',
+    'nineteen': '19',
+    'twenty': '20',
+    'thirty': '30',
+    'forty': '40',
+    'fifty': '50',
+    'sixty': '60',
+    'seventy': '70',
+    'eighty': '80',
+    'ninety': '90',
+}
+
+alpha.update(numerals)
 
 # cleans up some Dragon output from <dgndictation>
 mapping = {
@@ -49,6 +75,10 @@ mapping = {
 }
 # used for auto-spacing
 punctuation = set('.,-!?')
+
+def CursorText(s):
+  left, right = s.split('{.}', 1)
+  return [left + right, Key(' '.join(['left'] * len(right)))]
 
 def parse_word(word):
     word = str(word).lstrip('\\').split('\\', 1)[0]
@@ -87,28 +117,22 @@ def surround(by):
         return word
     return func
 
-def rot13(i, word, _):
-    out = ''
-    for c in word.lower():
-        if c in string.ascii_lowercase:
-            c = chr((((ord(c) - ord('a')) + 13) % 26) + ord('a'))
-        out += c
-    return out
-
 formatters = {
-    'dunder': (True,  lambda i, word, _: '__%s__' % word if i == 0 else word),
     'camel':  (True,  lambda i, word, _: word if i == 0 else word.capitalize()),
-    'snake':  (True,  lambda i, word, _: word if i == 0 else '_'+word),
-    'smash':  (True,  lambda i, word, _: word),
-    # spinal or kebab?
-    'kebab':  (True,  lambda i, word, _: word if i == 0 else '-'+word),
-    # 'sentence':  (False, lambda i, word, _: word.capitalize() if i == 0 else word),
-    'title':  (False, lambda i, word, _: word.capitalize()),
-    'allcaps': (False, lambda i, word, _: word.upper()),
-    'dubstring': (False, surround('"')),
-    'string': (False, surround("'")),
+    'score':  (True,  lambda i, word, _: word if i == 0 else '_'+word),
+    'jumble':  (True,  lambda i, word, _: word),
+    'shash':  (True,  lambda i, word, _: word),
+    'hyphenate':  (True,  lambda i, word, _: word if i == 0 else '-'+word),
+    'titlecase':  (False, lambda i, word, _: word.capitalize()),
+    'uppercase': (False, lambda i, word, _: word.upper()),
+    'string': (False, surround('"')),
+    'single-string': (False, surround("'")),
     'padded': (False, surround(" ")),
-    'rot-thirteen':  (False, rot13),
+    # https://github.com/lexjacobs/talon_user/blob/master/std.py for the next set:
+    'pathway':  (True, lambda i, word, _: word if i == 0 else '/'+word),
+    'dot-case':  (True, lambda i, word, _: word if i == 0 else '.'+word),
+    'thrack': (True, lambda i, word, _: word[0:3]), # first 3 letters of word
+    'quattro': (True, lambda i, word, _: word[0:4]), # first 4 letters of word
 }
 
 def FormatText(m):
@@ -146,9 +170,9 @@ ctx = Context('input')
 keymap = {}
 keymap.update(alpha)
 keymap.update({
-    'phrase <dgndictation> [over]': text,
+    'say <dgndictation> [over]': text,
 
-    'sentence <dgndictation> [over]': sentence_text,
+    'cap <dgndictation> [over]': sentence_text,
     'comma <dgndictation> [over]': [', ', text],
     'period <dgndictation> [over]': ['. ', sentence_text],
     'more <dgndictation> [over]': [' ', text],
@@ -162,41 +186,46 @@ keymap.update({
     'up':    Key('up'),
     'down':  Key('down'),
 
-    'delete': Key('backspace'),
+    'chuck': Key('backspace'),
 
     'slap': [Key('cmd-right enter')],
     'enter': Key('enter'),
-    'escape': Key('esc'),
-    'question [mark]': '?',
+    'escape | scape': Key('esc'),
+    'quest mark': '?',
     'tilde': '~',
-    '(bang | exclamation point)': '!',
-    'dollar [sign]': '$',
-    'downscore': '_',
+    '(bang | exclamation [mark])': '!',
+    'dollar': '$',
+    'underscore': '_',
     '(semi | semicolon)': ';',
     'colon': ':',
-    '(square | left square [bracket])': '[', '(rsquare | are square | right square [bracket])': ']',
-    '(paren | left paren)': '(', '(rparen | are paren | right paren)': ')',
-    '(brace | left brace)': '{', '(rbrace | are brace | right brace)': '}',
-    '(angle | left angle | less than)': '<', '(rangle | are angle | right angle | greater than)': '>',
+    'lack': '[',
+    'rack': ']',
+    'lap': '(',
+    'rap': ')',
+    'lace': '{',
+    'race': '}',
+    'langle': '<',
+    'rangle': '>',
 
-    '(star | asterisk)': '*',
-    '(pound | hash [sign] | octo | thorpe | number sign)': '#',
+    'asterisk': '*',
+    'hash': '#',
     'percent [sign]': '%',
     'caret': '^',
     'at sign': '@',
-    '(and sign | ampersand | amper)': '&',
-    'pipe': '|',
+    'ampersand': '&',
+    '(vertical bar | or sign | pipe)': '|',
 
     '(dubquote | double quote)': '"',
     'quote': "'",
-    'triple quote': "'''",
+    # 'triple quote': "'''",
     '(dot | period)': '.',
     'comma': ',',
     'space': ' ',
-    '[forward] slash': '/',
+    'slash': '/',
     'backslash': '\\',
 
     '(dot dot | dotdot)': '..',
+    '(dot dot dot | dotdotdot)': '...',
     'cd': 'cd ',
     'cd talon home': 'cd {}'.format(TALON_HOME),
     'cd talon user': 'cd {}'.format(TALON_USER),
@@ -223,84 +252,87 @@ keymap.update({
     'run get rebase': 'git rebase ',
     'run get reset': 'git reset ',
     'run get show': 'git show ',
-    'run get status': 'git status ',
+    'run get status': 'git status \n',
     'run get tag': 'git tag ',
     'run (them | vim)': 'vim ',
-    'run L S': 'ls\n',
+    'run (L S | ellis)': 'ls\n',
     'dot pie': '.py',
+    'dot R': '.R',
+    'dot C P P': '.cpp',
+    'dot Stan': '.stan',
     'run make': 'make\n',
-    'run jobs': 'jobs\n',
+    # 'run jobs': 'jobs\n',
 
-    'const': 'const ',
-    'static': 'static ',
-    'tip pent': 'int ',
-    'tip char': 'char ',
-    'tip byte': 'byte ',
-    'tip pent 64': 'int64_t ',
-    'tip you went 64': 'uint64_t ',
-    'tip pent 32': 'int32_t ',
-    'tip you went 32': 'uint32_t ',
-    'tip pent 16': 'int16_t ',
-    'tip you went 16': 'uint16_t ',
-    'tip pent 8': 'int8_t ',
-    'tip you went 8': 'uint8_t ',
-    'tip size': 'size_t',
-    'tip float': 'float ',
-    'tip double': 'double ',
+#    'const': 'const ',
+#    'static': 'static ',
+#    'tip pent': 'int ',
+#    'tip char': 'char ',
+#    'tip byte': 'byte ',
+#    'tip pent 64': 'int64_t ',
+#    'tip you went 64': 'uint64_t ',
+#    'tip pent 32': 'int32_t ',
+#    'tip you went 32': 'uint32_t ',
+#    'tip pent 16': 'int16_t ',
+#    'tip you went 16': 'uint16_t ',
+#    'tip pent 8': 'int8_t ',
+#    'tip you went 8': 'uint8_t ',
+#    'tip size': 'size_t',
+#    'tip float': 'float ',
+#    'tip double': 'double ',
 
     'args': ['()', Key('left')],
     'index': ['[]', Key('left')],
-    'block': [' {}', Key('left enter enter up tab')],
-    'empty array': '[]',
-    'empty dict': '{}',
+    # 'block': [' {}', Key('left enter enter up tab')],
+    # 'empty array': '[]',
+    # 'empty dict': '{}',
 
-    'state (def | deaf | deft)': 'def ',
-    'state else if': 'elif ',
+    # 'state (def | deaf | deft)': 'def ',
+    # 'state else if': 'elif ',
     'state if': 'if ',
     'state else if': [' else if ()', Key('left')],
     'state while': ['while ()', Key('left')],
     'state for': ['for ()', Key('left')],
-    'state for': 'for ',
+    # 'state for': 'for ',
     'state switch': ['switch ()', Key('left')],
-    'state case': ['case \nbreak;', Key('up')],
-    'state goto': 'goto ',
-    'state import': 'import ',
-    'state class': 'class ',
+    # 'state case': ['case \nbreak;', Key('up')],
+    # 'state goto': 'goto ',
+    # 'state import': 'import ',
+    # 'state class': 'class ',
 
-    'state include': '#include ',
-    'state include system': ['#include <>', Key('left')],
-    'state include local': ['#include ""', Key('left')],
-    'state type deaf': 'typedef ',
-    'state type deaf struct': ['typedef struct {\n\n};', Key('up'), '\t'],
+    # 'state include': '#include ',
+    # 'state include system': ['#include <>', Key('left')],
+    # 'state include local': ['#include ""', Key('left')],
+    # 'state type deaf': 'typedef ',
+    # 'state type deaf struct': ['typedef struct {\n\n};', Key('up'), '\t'],
 
     'comment see': '// ',
-    'comment py': '# ',
+    'comment are': '# ',
 
     'word queue': 'queue',
     'word eye': 'eye',
-    'word bson': 'bson',
-    'word iter': 'iter',
+    # 'word bson': 'bson',
+    # 'word iter': 'iter',
     'word no': 'NULL',
     'word cmd': 'cmd',
-    'word dup': 'dup',
-    'word streak': ['streq()', Key('left')],
-    'word printf': 'printf',
-    'word (dickt | dictionary)': 'dict',
-    'word shell': 'shell',
+    # 'word dup': 'dup',
+    # 'word streak': ['streq()', Key('left')],
+    # 'word printf': 'printf',
+    # 'word (dickt | dictionary)': 'dict',
+    # 'word shell': 'shell',
 
-    'word lunixbochs': 'lunixbochs',
+    # 'word lunixbochs': 'lunixbochs',
     'word talon': 'talon',
-    'word Point2d': 'Point2d',
-    'word Point3d': 'Point3d',
-    'title Point': 'Point',
+    # 'word Point2d': 'Point2d',
+    # 'word Point3d': 'Point3d',
+    # 'title Point': 'Point',
     'word angle': 'angle',
 
-    'dunder in it': '__init__',
-    'self taught': 'self.',
-    'dickt in it': ['{}', Key('left')],
-    'list in it': ['[]', Key('left')],
-    'string utf8': "'utf8'",
-    'state past': 'pass',
+    # 'dunder in it': '__init__',
+    # 'self taught': 'self.',
+    # 'dickt in it': ['{}', Key('left')], # FIXME redefine
+    # 'list in it': ['[]', Key('left')], # FIXME redefine
+    # 'string utf8': "'utf8'",
+    # 'state past': 'pass',
 
     'equals': '=',
     '(minus | dash)': '-',
@@ -312,7 +344,7 @@ keymap.update({
     '(op equals | assign)': ' = ',
     'op (minus | subtract)': ' - ',
     'op (plus | add)': ' + ',
-    'op (times | multiply)': ' * ',
+    'op (times | multiply | asterisk)': ' * ',
     'op divide': ' / ',
     'op mod': ' % ',
     '[op] (minus | subtract) equals': ' -= ',
@@ -357,5 +389,7 @@ keymap.update({
 
     'scroll down': [Key('down')] * 30,
     'scroll up': [Key('up')] * 30,
+
 })
+
 ctx.keymap(keymap)
