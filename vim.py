@@ -1,29 +1,96 @@
 from talon.voice import Word, Context, Key, Rep, Str, press
 
-ctx = Context('vim', bundle='com.apple.Terminal', func=lambda app, win: 'vim' in win.title)
+ctx = Context('vim', bundle='com.googlecode.iterm2', func=lambda app, win: 'vim' in win.title)
+
 ctx.keymap({
-    'bson append doc begin': ['BSON_APPEND_DOCUMENT_BEGIN();', Key('left left')],
-    'bson append doc end': ['bson_append_document_end();', Key('left left')],
-    'bson append array begin': ['BSON_APPEND_ARRAY_BEGIN();', Key('left left')],
-    'bson append array end': ['bson_append_array_end();', Key('left left')],
+        "dosh line": [Key('d')] * 2,
+        "yank line": [Key('y')] * 2,
+        "vim top": [Key("g")] * 2,
+        "vim bottom": Key("esc G"),
+        "append": Key("esc a"),
+        "big append": Key("esc A"),
+        "open": Key("esc o"),
+        "big open": Key("esc O"),
+        "paste": Key("esc p"),
+        "big open": Key("esc P"),
 
-    'bson append end 32': ['BSON_APPEND_INT32();', Key('left left')],
-    'bson append end 64': ['BSON_APPEND_INT64();', Key('left left')],
-    'bson append double': ['BSON_APPEND_DOUBLE();', Key('left left')],
-    'bson append you tf [8]': ['BSON_APPEND_UTF8();', Key('left left')],
-    'bson append binary': ['BSON_APPEND_BINARY();', Key('left left')],
+        'screen (center|middle)': Key("esc z ."),
+        'screen top': Key("esc z t"),
+        'screen bottom': Key("esc z b"),
 
-    'bson update index': ['bson_uint32_to_string(, &index, keystr, sizeof(keystr));', Key(('left ' * 34).strip())],
+        "split screen": Key("esc ctrl-w s"),
+        "split screen vertically": Key("esc ctrl-w v"),
+        "(screen|window) left": Key("ctrl-h"),
+        "(screen|window) right": Key("ctrl-l"),
+        "(screen|window) up": Key("ctrl-k"),
+        "(screen|window) down": Key("ctrl-j"),
+        # "split screen": esc + Key("c-w,s"),
+        # "split screen|window) vertically": esc + Key("c-w,v"),
 
-    'tip bson [tee]': 'bson_t ',
-    'tip bson iter [tee]': 'bson_iter_t ',
-    'tip eye dev': 'eye_dev *',
-    'tip eye buff': 'ebuf **',
-    'tip pie object': 'PyObject',
+        "comment line": "gcc",
+        "comment para": "gcap",
 
-    'word stood in': 'stdin',
-    'word stood out': 'stdout',
-    'word stood err': 'stderr',
-    'word write': 'write',
-    'word linux': 'linux',
+        "duplicate line": "yyp",
+        "mort": Key("ctrl-d"),
+        "lest": Key("ctrl-u"),
+
+        "record macro": "qq",
+        "end macro": "q",
+
+        "format para": "Q",
+
+        "mark that": "ma",
+        "jump mark": "`a",
+        "copy mark": "y`a",
+        "dosh mark": "d`a",
+        "format mark": "gq`a",
+        "remove mark": "m -",
+
+        "pip": Key("ctrl-n"),
+        "pop": Key("ctrl-p"),
+        "(pop|pip) file": Key("ctrl-x ctrl-f"),
+        "(pop|pip) line": Key("ctrl-x ctrl-l"),
+        "(pop|pip) omni": Key("ctrl-x ctrl-o"),
+        "(pop|pip) arg": Key("ctrl-x ctrl-a"),
+        "(pop|pip) cancel": Key("ctrl-e"),
+
+        "edit file": [Key("escape"), ':e '],
+        "edit args": ":args *.",
+        "write file": [Key("escape"), ':update', Key("enter")],
+        "write and exit": ":wq!",
+        "close buffer": ":q\n",
+        "delete buffer": ":bd\n",
+        "write all files": ":wall\n",
+
+        "fuzzy buff": [Key("escape"), ":Buffers", Key("enter")],
+#        "fuzzy files": esc + Key("colon,s-F,i,l,e,s,enter"),
+#        "fuzzy lines all": esc + Key("colon,s-L,i,n,e,s,enter"),
+#        "fuzzy lines": esc + Key("colon,s-B,s-L,i,n,e,s,enter"),
+#        "fuzzy tags all": esc + Key("colon,s-T,a,g,s,enter"),
+#        "fuzzy tags": esc + Key("colon,s-B,s-T,a,g,s,enter"),
+#        "fuzzy git files": esc + Key("colon,s-G,i,t,s-F,i,l,e,s,enter"),
+#        "fuzzy (history|recent)": esc + Key("colon,s-H,i,s,t,o,r,y,enter"),
+#        "fuzzy commits": esc + Key("colon,s-C,o,m,m,i,t,s,enter"),
+#        "fuzzy help": esc + Key("colon,s-H,e,l,p,enter"),
+#        "fuzzy grep": esc + Key("colon,s-A,g,enter"),
+
+        "vim theme solarize dark": ":colo flattened_dark\n",
+        "vim theme solarize light": ":colo flattened_light\n",
+        "vim theme soul": ":colo seoul256\n",
+        "vim toggle lights": ":ToggleBG\n",
+        "vim toggle spelling": ":setlocal spell!\n",
+        "vim toggle obsession": ":Obsession!\n",
+        "vim toggle numbers": ":set relativenumber!\n",
+
+        # R specific stuff
+        "pipe that": " %>% ",
+        "assign that": " <- ",
+
+        "argument that": ",ra",
+        "help that": ",rh",
+        "print that": ",rp",
+        "structure that": ",rt",
+        "name that": ",rn",
+
+        "rip that": Key("enter"),
 })
