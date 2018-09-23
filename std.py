@@ -31,7 +31,7 @@ keys += [
     ('lack', '['),
     ('rack', ']'),
     ('backslash', '\\'),
-    ('minus', '-'),
+    ('hyphen', '-'),
     ('equals', '='),
 ] + fkeys
 alpha.update({word: Key(key) for word, key in fkeys})
@@ -187,12 +187,14 @@ keymap.update({
     'down':  Key('down'),
 
     'chuck': Key('backspace'),
+    'kill': Key('delete'),
 
-    'slap': [Key('cmd-right enter')],
-    'enter': Key('enter'),
-    'escape | scape': Key('esc'),
+    'new line': [Key('cmd-right enter')],
+    '(slap | return)': Key('enter'),
+    '(escape | scape)': Key('esc'),
     'quest mark': '?',
     'tilde': '~',
+    'backtick': '`',
     '(bang | exclamation [mark])': '!',
     'dollar': '$',
     'underscore': '_',
@@ -201,13 +203,13 @@ keymap.update({
     'lack': '[',
     'rack': ']',
     'lap': '(',
-    'rap': ')',
+    'wrap': ')',
     'lace': '{',
     'race': '}',
     'langle': '<',
     'rangle': '>',
 
-    'asterisk': '*',
+    '(asterisk|star)': '*',
     'hash': '#',
     'percent [sign]': '%',
     'caret': '^',
@@ -215,11 +217,11 @@ keymap.update({
     'ampersand': '&',
     '(vertical bar | or sign | pipe)': '|',
 
-    '(dubquote | double quote)': '"',
-    'quote': "'",
+    'quote': '"',
+    # 'single quote': "'",
     # 'triple quote': "'''",
     '(dot | period)': '.',
-    'comma': ',',
+    '(comma|calm)': ',',
     'space': ' ',
     'slash': '/',
     'backslash': '\\',
@@ -335,7 +337,7 @@ keymap.update({
     # 'state past': 'pass',
 
     'equals': '=',
-    '(minus | dash)': '-',
+    '(hyphen | dash)': '-',
     'plus': '+',
     'arrow': '->',
     'call': '()',
@@ -390,6 +392,12 @@ keymap.update({
     'scroll down': [Key('down')] * 30,
     'scroll up': [Key('up')] * 30,
 
+    'copy that': Key('cmd+c'),
+    'cut that': Key('cmd+x'),
+    'paste that': Key('cmd+v'),
+    'paste without formatting': Key('cmd+shift+v'),
+    'undo that': Key('cmd+z'),
+    'redo that': Key('cmd+shift+z'),
 })
 
 ctx.keymap(keymap)
