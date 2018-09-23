@@ -1,4 +1,4 @@
-basic examples for use with Talon
+# Talon voice coding grammar configuration files
 
 Usage:
 
