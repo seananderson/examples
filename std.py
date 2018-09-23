@@ -1,6 +1,5 @@
 from talon.voice import Word, Context, Key, Rep, RepPhrase, Str, press
 from talon import ctrl, clip
-from talon_init import TALON_HOME, TALON_PLUGINS, TALON_USER
 import string
 
 # alpha_alt = 'air bat cap drum each fine gust harp sit jury crunch look made near odd pit quench red sun trap urge vest whale plex yank zip'.split()
@@ -201,7 +200,7 @@ keymap.update({
     'colon': ':',
     'lack': '[',
     'rack': ']',
-    'lap': '(',
+    '(lap|lape)': '(',
     '(wrap|rap)': ')',
     'lace': '{',
     'race': '}',
@@ -226,47 +225,14 @@ keymap.update({
     'backslash': '\\',
     '(dot dot dot | dotdotdot)': '...',
 
-    'cd': 'cd ',
     '(dot dot | dotdot)': '..',
-    'cd talon user': 'cd {}'.format(TALON_USER),
-    # 'cd talon home': 'cd {}'.format(TALON_HOME),
-    # 'cd talon plugins': 'cd {}'.format(TALON_PLUGINS),
-    'cd source': 'cd ~/src/',
-    'cd home': 'cd ~/',
 
-    'run make (durr | dear)': 'mkdir ',
-    'run jet': 'git ',
-    'run jet (R M | remove)': 'git rm ',
-    'run jet add': 'git add ',
-    # 'run jet bisect': 'git bisect ',
-    'run jet branch': 'git branch ',
-    'run jet checkout': 'git checkout ',
-    'run jet clone': 'git clone ',
-    'run jet commit': 'git commit ',
-    'run jet diff': 'git diff ',
-    'run jet fetch': 'git fetch ',
-    'run jet grep': 'git grep ',
-    'run jet in it': 'git init ',
-    'run jet log': 'git log ',
-    'run jet merge': 'git merge ',
-    'run jet move': 'git mv ',
-    'run jet pull': 'git pull ',
-    'run jet push': 'git push ',
-    'run jet rebase': 'git rebase ',
-    'run jet reset': 'git reset ',
-    'run jet show': 'git show ',
-    'run jet status': 'git status \n',
-    'run jet tag': 'git tag ',
-    'run (them | vim)': 'vim ',
-    'run (L S | ellis)': 'ls\n',
-    'run make': 'make\n',
-
-    'dot pie': '.py',
-    'dot R': '.R',
-    'dot C P P': '.cpp',
-    'dot Stan': '.stan',
-    'dot M D': '.md',
-    'dot R M D': '.Rmd',
+    'extension python': '.py',
+    'extension R': '.R',
+    'extension see plus plus': '.cpp',
+    'extension Stan': '.stan',
+    'extension markdown': '.md',
+    'extension R markdown': '.Rmd',
     # 'run jobs': 'jobs\n',
 
     # 'args': ['()', Key('left')],
@@ -311,6 +277,11 @@ keymap.update({
 
     # 'word lunixbochs': 'lunixbochs',
     'word talon': 'talon',
+    'word D-plier': 'dplyr',
+    'word G G plot 2': 'ggplot2',
+    'word reshape 2': 'reshape2',
+    'word G L M M': 'GLMM',
+    'word G L M': 'GLM',
     # 'word Point2d': 'Point2d',
     # 'word Point3d': 'Point3d',
     # 'title Point': 'Point',
@@ -362,16 +333,16 @@ keymap.update({
     # '[(op | logical | bitwise)] (left shift | shift left) equals': ' <<= ',
     # '[(op | logical | bitwise)] (right shift | shift right) equals': ' >>= ',
 
-    'shebang bash': '#!/bin/bash -u\n',
+    # 'shebang bash': '#!/bin/bash -u\n',
 
-    'new window': Key('cmd-n'),
-    'next window': Key('cmd-`'),
-    'last window': Key('cmd-shift-`'),
-    'next app': Key('cmd-tab'),
-    'last app': Key('cmd-shift-tab'),
-    'next tab': Key('ctrl-tab'),
-    'new tab': Key('cmd-t'),
-    'last tab': Key('ctrl-shift-tab'),
+    'window new': Key('cmd-n'),
+    'window next': Key('cmd-`'),
+    'window last': Key('cmd-shift-`'),
+    'app next': Key('cmd-tab'),
+    'app last': Key('cmd-shift-tab'),
+    'tab next': Key('ctrl-tab'),
+    'tab last': Key('ctrl-shift-tab'),
+    'tab new': Key('cmd-t'),
 
     # 'next space': Key('cmd-alt-ctrl-right'),
     # 'last space': Key('cmd-alt-ctrl-left'),
@@ -382,9 +353,25 @@ keymap.update({
     'copy that': Key('cmd+c'),
     'cut that': Key('cmd+x'),
     'paste that': Key('cmd+v'),
-    'paste without formatting': Key('cmd+shift+v'),
+    'paste Alfred': Key('cmd-shift-v'),
     'undo that': Key('cmd+z'),
     'redo that': Key('cmd+shift+z'),
+
+   # # window management
+   # "window maximize": Text("KBM Maximize window"),
+   # "window half left": Text("KBM Half window on left"),
+   # "window half right": Text("KBM Half window on right"),
+   # # "window bottom-left": Key("asw-left"),
+   # # "window bottom-right": Key("asw-down"),
+   # # "window top-left": Key("asw-up"),
+   # # "window top-right": Key("asw-right"),
+   # "window center": Text("KBM Center window"),
+   # "window third (middle|center)": Text("KBM Window third width middle"),
+   # "window third left": Text("KBM Window third width left"),
+   # "window third right": Text("KBM Window third width right"),
+
+    "mac toggle dock": Key("cmd-alt-d"),
+
 })
 
 ctx.keymap(keymap)
