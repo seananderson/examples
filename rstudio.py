@@ -215,4 +215,6 @@ ctx.keymap({
   'G G ex label':                'xlab(',
   'G G why label':                'ylab(',
 
+  'R function':        'function(',
+
 })
