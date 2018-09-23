@@ -18,6 +18,7 @@ keys = [
     'backspace', 'delete', 'home', 'pageup', 'pagedown', 'end',
 ]
 keys = alnum + [(k, k) for k in keys]
+keys += [('return', 'enter')]
 keys += [
     ('tilde', '`'),
     ('comma', ','),
