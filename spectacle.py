@@ -6,7 +6,7 @@ from talon.voice import Key, Context
 ctx = Context('spectacle')
 
 keymap = {
-    'window center':         Key('cmd-alt-c'),
+    'window center':         Key('shift-cmd-alt-C'), # Note this is not the default shortcut
     'window max':            Key('cmd-alt-f'),
 
     'window left':           Key('cmd-alt-left'),
