@@ -344,6 +344,7 @@ keymap.update({
 
     'window new': Key('cmd-n'),
     'window next': Key('cmd-`'),
+    'window close': Key('cmd-w'),
     'window last': Key('cmd-shift-`'),
     'window hide': Key('cmd-h'),
     'window hide others': Key('cmd-alt-h'),
