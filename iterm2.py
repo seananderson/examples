@@ -1,7 +1,7 @@
 from talon.voice import Word, Context, Key, Rep, Str, press
 from talon_init import TALON_HOME, TALON_PLUGINS, TALON_USER
 
-ctx = Context('vim', bundle='com.googlecode.iterm2')
+ctx = Context('terminal', bundle='com.googlecode.iterm2')
 
 ctx.keymap({
     'cd': 'cd ',
