@@ -1,2 +1,5 @@
 .Rproj.user/
 user.Rproj
+.sublime-project
+*.sublime-project
+*.sublime-workspace
