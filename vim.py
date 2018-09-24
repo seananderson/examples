@@ -3,6 +3,21 @@ from talon.voice import Word, Context, Key, Rep, Str, press
 ctx = Context('vim', bundle='com.googlecode.iterm2',
         func=lambda app, win: 'vim' in win.title)
 
+def search_forward(m):
+    press('/')
+    w = str(m.dgndictation[0]._words[0])
+    w = w.lower()
+    Str(w)(None)
+    press('return')
+
+
+def search_reverse(m):
+    press('?')
+    w = str(m.dgndictation[0]._words[0])
+    w = w.lower()
+    Str(w)(None)
+    press('enter')
+
 ctx.keymap({
 
         "(insert | sert)":          "i",
@@ -96,4 +111,8 @@ ctx.keymap({
         "name that":                ",rn",
 
         "rip that":                 Key("enter"),
+
+        # https://github.com/pimentel/talon_user/blob/master/vim.py
+        'jump till <dgndictation>': search_forward,
+        'jump back till <dgndictation>': search_reverse,
 })
