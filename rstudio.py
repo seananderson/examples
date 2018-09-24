@@ -1,40 +1,44 @@
 from talon.voice import Word, Context, Key, Rep, Str, press
+from user.utils import parse_words_as_integer
 
 ctx = Context('RStudio', bundle='org.rstudio.RStudio')
 
 # from: https://github.com/dwighthouse/talonvoice-scripts/blob/master/VSCode.py
-def jump_to_line(m):
-    line_number = parse_words_as_integer(m._words[1:])
-
-    if line_number == None:
-        return
-
-    # Zeroth line should go to first line
-    if line_number == 0:
-        line_number = 1
-
-    # Open the jump to line input
-    press('cmd-alt-shift-G')
-
-    # TODO: If requesting line that is beyond the end of the focused document, jump to last line instead
-
-    # Enter whole line number data as if from keyboard
-    Str(str(line_number))(None)
-
-    # Confirm the navigation
-    press('enter')
-
-    # Position cursor at the beginning of meaningful text on the current line (Mac OS X)
-    # press('cmd-right')
-    press('cmd-left')
+#def jump_to_line(m):
+#    line_number = parse_words_as_integer(m._words[1:])
+#
+#    if line_number == None:
+#        return
+#
+#    # Zeroth line should go to first line
+#    if line_number == 0:
+#        line_number = 1
+#
+#    # Open the jump to line input
+#    press('cmd-alt-shift-G')
+#    time.sleep(0.1)
+#
+#    # TODO: If requesting line that is beyond the end of the focused document, jump to last line instead
+#
+#    # Enter whole line number data as if from keyboard
+#    Str(str(line_number))(None)
+#    time.sleep(0.1)
+#
+#    # Confirm the navigation
+#    press('enter')
+#
+#    # Position cursor at the beginning of meaningful text on the current line (Mac OS X)
+#    # press('cmd-right')
+#    press('cmd-left')
 
 ctx.keymap({
-  'line (0 | oh | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9)+': jump_to_line,
+ # 'jump to line (0 | oh | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9)+': jump_to_line,
+
   'expand select':                Key('shift-alt-cmd-up'),
   'reduce select':                Key('shift-alt-cmd-down'),
   # 'duplicate line': Key('alt-cmd-down'),
 
-  'jump matching':                Key('ctrl-p'),
+  'go to matching':                Key('ctrl-p'),
 
   'pip':                          Key('tab'),
 
