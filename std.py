@@ -92,12 +92,15 @@ def parse_word(word):
     word = mapping.get(word, word)
     return word
 
-def join_words(words, sep=' '):
+def join_words(words, sep=' ', cap_first=False):
     out = ''
     for i, word in enumerate(words):
         if i > 0 and word not in punctuation:
             out += sep
-        out += word
+        if i == 0 and cap_first:
+            out += word.capitalize()
+        else:
+            out += word
     return out
 
 def parse_words(m):
@@ -107,11 +110,10 @@ def insert(s):
     Str(s)(None)
 
 def text(m):
-    insert(join_words(parse_words(m)).lower())
+    insert(join_words(parse_words(m)))
 
 def sentence_text(m):
-    text = join_words(parse_words(m)).lower()
-    insert(text.capitalize())
+    insert(join_words(parse_words(m), cap_first=True))
 
 def word(m):
     text = join_words(list(map(parse_word, m.dgnwords[0]._words)))
