@@ -18,11 +18,9 @@ def repeat(m):
         return repeater(None)
 
 ctx.keymap({
-    #'creek': RepPhrase(1),
+  #  'creek': RepPhrase(1), # how is this different from Rep()?
     'twice': Rep(1),
     'thrice': Rep(2),
-    #'quarr': Rep(3),
-    #'fypes': Rep(4),
     '(rep) (0 | oh | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9) + ': repeat,
     })
 
