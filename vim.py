@@ -81,6 +81,7 @@ ctx.keymap({
         "write all files":          ":wall\n",
 
         "fuzzy buff":               [Key("escape"), ":Buffers", Key("enter")],
+        "fuzzy close":              [Key("ctrl-c")],
 #        "fuzzy files": esc + Key("colon,s-F,i,l,e,s,enter"),
 #        "fuzzy lines all": esc + Key("colon,s-L,i,n,e,s,enter"),
 #        "fuzzy lines": esc + Key("colon,s-B,s-L,i,n,e,s,enter"),
@@ -110,7 +111,7 @@ ctx.keymap({
         "structure that":           ",rt",
         "name that":                ",rn",
 
-        "rip that":                 Key("enter"),
+        "eval":                 Key("enter"),
 
         # https://github.com/pimentel/talon_user/blob/master/vim.py
         'jump till <dgndictation>': search_forward,

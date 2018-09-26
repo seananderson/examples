@@ -253,6 +253,6 @@ ctx.keymap({
   'R data frame':                 'data.frame(',
   'R is N A':                     'is.na(',
 
-  'nerb smash row': 'nrow',
+  'nerb (smash|jumble) row': 'nrow',
 
 })

@@ -3,10 +3,7 @@ from talon import ctrl, clip
 import string
 import time
 
-# alpha_alt = 'air bat cap drum each fine gust harp sit jury crunch look'\
-#         'made near odd pit quench red sun trap urge vest whale plex'\
-#         'yank zip'.split()
-
+# alpha_alt = 'air bat cap drum each fine gust harp sit jury crunch look made near odd pit quench red sun trap urge vest whale plex yank zip'.split()
 alpha_alt = 'arch bravo char dilbert echo fox golf hotel ice juliet kilo lug mike nerb ork pooch queen romeo souk tango unk victor whiskey x-ray yankee zip'.split()
 
 alnum = list(zip(alpha_alt, string.ascii_lowercase)) + [(str(i), str(i)) for i in range(0, 10)]
@@ -16,7 +13,7 @@ alpha.update(dict(alnum))
 alpha.update({'sky %s' % word: letter for word, letter in zip(alpha_alt, string.ascii_uppercase)})
 
 # modifier key mappings
-fkeys = [(f'F {i}', f'f{i}') for i in range(1, 13)]
+fkeys = [(f'press F {i}', f'f{i}') for i in range(1, 13)]
 keys = [
     'left', 'right', 'up', 'down', 'shift', 'tab', 'escape', 'enter', 'space',
     'backspace', 'delete', 'home', 'pageup', 'pagedown', 'end',
@@ -49,25 +46,6 @@ alpha.update({'alt shift %s' % k: Key('alt-%s' % v) for k, v in keys})
 numerals = {
     'duo': '2',
     'quad': '4',
-    # 'ten': '10',
-    # 'eleven': '11',
-    # 'twelve': '12',
-    # 'thirteen': '13',
-    # 'fourteen': '14',
-    # 'fifteen': '15',
-    # 'sixteen': '16',
-    # 'seventeen': '17',
-    # 'eighteen': '18',
-    # 'nineteen': '19',
-    # 'twenty': '20',
-    # 'thirty': '30',
-    # 'forty': '40',
-    # 'forty two': '42',
-    # 'fifty': '50',
-    # 'sixty': '60',
-    # 'seventy': '70',
-    # 'eighty': '80',
-    # 'ninety': '90',
     'hundred': '00',
     'thousand': '000',
 }
@@ -103,8 +81,55 @@ def join_words(words, sep=' ', cap_first=False):
             out += word
     return out
 
+# # Alternative to only auto-capitalize I:
+# # from aegis on Slack
+# 
+# def parse_words(m):
+#     return list(map(parse_word, m.dgndictation[0]._words))
+# 
+# def insert(s):
+#     Str(s)(None)
+# 
+# def lower_not_i(s):
+#     return ' '.join([word.lower() if word != 'I' else 'I' for word in s.split(' ')])
+# 
+# def text(m):
+#     insert(lower_not_i(join_words(parse_words(m))))
+# 
+# def sentence_text(m):
+#     text = lower_not_i(join_words(parse_words(m)))
+#     insert(text.capitalize())
+# 
+# def word(m):
+#     text = join_words(list(map(parse_word, m.dgnwords[0]._words)))
+#     insert(lower_not_i(text))
+# 
+## Hook for replacement, from lexjacobs on Slack
+# 
+## better to use "I'll" etc
+# token_replace = {
+#     'et cetera': 'etc',
+#     'e-mail': 'email',
+#     'I\\pronoun': 'I',
+#     'I\'ll': 'I\'ll',
+#     'I\'m': 'I\'m',
+#     'I\'ve': 'I\'ve',
+#     'I\'d': 'I\'d',
+#     'meta-\\\\meta': 'meta',
+# }
+# 
+# def parse_word(word):
+#     word = str(word)
+#     if word in token_replace:
+#         word = token_replace.get(word)
+#     else:
+#         word = word.lower()
+#     word = word.lstrip('\\').split('\\', 1)[0]
+#     word = mapping.get(word, word)
+#     return word
+
 def parse_words(m):
-    return list(map(parse_word, m.dgndictation[0]._words))
+   return list(map(parse_word, m.dgndictation[0]._words))
 
 def insert(s):
     Str(s)(None)
@@ -128,21 +153,21 @@ def surround(by):
 
 formatters = {
     'camel':     (True,  lambda i, word, _: word if i == 0 else word.capitalize()),
-    'score':     (True,  lambda i, word, _: word if i == 0 else '_'+word),
-    'smash':     (True,  lambda i, word, _: word),
-    'jumble':    (True,  lambda i, word, _: word),
-    'jive':      (True,  lambda i, word, _: word if i == 0 else '-'+word),
+    'score':     (True,  lambda i, word, _: word if i == 0 else '_'+word.lower()),
+    'smash':     (True,  lambda i, word, _: word.lower()),
+    'jumble':    (True,  lambda i, word, _: word.lower()),
+    'jive':      (True,  lambda i, word, _: word.lower() if i == 0 else '-'+word.lower()),
     'titlecase': (False, lambda i, word, _: word.capitalize()),
     'uppercase': (False, lambda i, word, _: word.upper()),
-    'string':    (False, surround('"')),
+    'double-string':    (False, surround('"')),
     'single-string': (False, surround("'")),
     'padded':    (False, surround(" ")),
-    'pathify':   (True,  lambda i, word, _: word if i == 0 else '/'+word.lower()),
-    'dotify':    (True,  lambda i, word, _: word if i == 0 else '.'+word.lower()),
+    'pathify':   (True,  lambda i, word, _: word.lower() if i == 0 else '/'+word.lower()),
+    'dotify':    (True,  lambda i, word, _: word.lower() if i == 0 else '.'+word.lower()),
 
-    'thrack':    (True,  lambda i, word, _: word[0:3]), # first 3 letters of word
-    'quattro':   (True,  lambda i, word, _: word[0:4]), # first 4 letters of word
-    'quintro':   (True,  lambda i, word, _: word[0:5]), # first 5 letters of word
+    'thrack':    (True,  lambda i, word, _: word.lower()[0:3]), # first 3 letters of word
+    'quattro':   (True,  lambda i, word, _: word.lower()[0:4]), # first 4 ...
+    'quintro':   (True,  lambda i, word, _: word.lower()[0:5]), # first 5 ...
 }
 
 def FormatText(m):
@@ -181,13 +206,11 @@ keymap = {}
 keymap.update(alpha)
 keymap.update({
     'say <dgndictation> [over]': text,
-
     'cap <dgndictation> [over]': sentence_text,
-    'comma <dgndictation> [over]': [', ', text],
+    'calm <dgndictation> [over]': [', ', text],
     'period <dgndictation> [over]': ['. ', sentence_text],
     'more <dgndictation> [over]': [' ', text],
     'word <dgnwords>': word,
-
     '(%s)+ [<dgndictation>]' % (' | '.join(formatters)): FormatText,
 
     'tab': Key('tab'),
@@ -199,9 +222,8 @@ keymap.update({
     'chuck': Key('backspace'),
     'kill': Key('delete'),
 
-    #'new line': [Key('cmd-right enter')],
     'slap': Key('enter'),
-    'slap that': [Key('cmd-right'), lambda m: time.sleep(0.1), Key('enter')],
+    'slap that': [Key('cmd-right'), lambda m: time.sleep(0.05), Key('enter')],
     '(escape | scape)': Key('esc'),
     'quest mark': '?',
     'tilde': '~',
@@ -209,36 +231,34 @@ keymap.update({
     '(bang | exclamation [mark])': '!',
     'dollar': '$',
     'underscore': '_',
-    '(semi | semicolon)': ';',
+    'semi': ';',
     'colon': ':',
     'lack': '[',
     'rack': ']',
-    '(lape|paren|parent)': '(',
-    '(wrap|rap)': ')',
+    'paren': '(',
+    'R paren': ')',
     'lace': '{',
     'race': '}',
     'langle': '<',
     'rangle': '>',
 
-    '(asterisk|star)': '*',
+    'asterisk': '*',
     'hash': '#',
-    'percent [sign]': '%',
+    'percent': '%',
     'caret': '^',
-    'at sign': '@',
+    'at symbol': '@',
     'ampersand': '&',
     'vertical bar': '|',
 
     'double quote': '"',
     'quote': "'",
-    #'triple quote': "'''",
-    '(dot | period)': '.',
+    'dot': '.',
     'calm': ',',
     'calmer': ', ',
     'space': ' ',
     'slash': '/',
     'backslash': '\\',
     '(dot dot dot | dotdotdot)': '...',
-
     '(dot dot | dotdot)': '..',
 
     'extension python': '.py',
@@ -247,26 +267,16 @@ keymap.update({
     'extension Stan': '.stan',
     'extension markdown': '.md',
     'extension R markdown': '.Rmd',
-    #'run jobs': 'jobs\n',
 
-    #'args': ['()', Key('left')],
-    #'index': ['[]', Key('left')],
-    #'block': [' {}', Key('left enter enter up tab')],
-    #'empty array': '[]',
-    #'empty dict': '{}',
+    'args': ['()', Key('left')],
+    'index': ['[]', Key('left')],
+    'block': [' {}', Key('left enter enter up tab')],
 
-    #'state (def | deaf | deft)': 'def ',
-    #'state else if': 'elif ',
     'state if': ['if ()', Key('left')],
     'state else if': [' else if ()', Key('left')],
     'state while': ['while ()', Key('left')],
     'state for': ['for ()', Key('left')],
-    #'state for': 'for ',
     'state switch': ['switch ()', Key('left')],
-    #'state case': ['case \nbreak;', Key('up')],
-    #'state goto': 'goto ',
-    #'state import': 'import ',
-    #'state class': 'class ',
 
     #'state include': '#include ',
     #'state include system': ['#include <>', Key('left')],
@@ -281,7 +291,6 @@ keymap.update({
     #'word eye': 'eye',
     #'word iter': 'iter',
     #'word no': 'NULL',
-    #'word printf': 'printf',
 
     'word talon': 'talon',
     'word D-plier': 'dplyr',
@@ -292,6 +301,8 @@ keymap.update({
     'word area': 'area',
     'word axis': 'axis',
     'word paste': 'paste',
+    'word to do': 'TODO: ',
+    'word fix me': 'FIXME: ',
 
     #'dickt in it': ['{}', Key('left')],
     #FIXME redefine# 'list in it': ['[]', Key('left')],
@@ -300,18 +311,14 @@ keymap.update({
 
     'plus': '+',
     'hyphen': '-',
-    #'arrow': '->',
-    #'call': '()',
-    #'indirect': '&',
-    #'dereference': '*',
     'op (equal | equals | assign)': ' = ',
     'equals': ' = ',
-    'equal sign': '=',
+    'equal symbol': '=',
     'op (minus | hyphen)': ' - ',
     'op (plus | add)': ' + ',
     'op (times | asterisk | star)': ' * ',
     'op divide': ' / ',
-    'op comma': ', ',
+    #'op comma': ', ',
     #'op mod': ' % ',
     #'[op] (minus | subtract) equals': ' -= ',
     #'[op] (plus | add) equals': ' += ',
@@ -319,6 +326,7 @@ keymap.update({
     #'[op] divide equals': ' /= ',
     #'[op] mod equals': ' %= ',
 
+    '(op | is) tilde from': ' ~ ',
     '(op | is) greater than': ' > ',
     '(op | is) less than': ' < ',
     '(op | is) an element of': ' %in% ',
@@ -356,9 +364,6 @@ keymap.update({
     'tab last': Key('ctrl-shift-tab'),
     'tab new': Key('cmd-t'),
 
-    #'next space': Key('cmd-alt-ctrl-right'),
-    #'last space': Key('cmd-alt-ctrl-left'),
-
     'scroll down': [Key('down')] * 30,
     'scroll up': [Key('up')] * 30,
 
@@ -366,27 +371,28 @@ keymap.update({
     'cut that': Key('cmd-x'),
     'paste that': Key('cmd-v'),
     'Alfred paste': Key('cmd-shift-v'),
+    'Alfred paste that': [Key('cmd-shift-v'), lambda m: time.sleep(0.1), Key('enter')],
     'Alfred go to': [Key('cmd-space'), lambda m: time.sleep(0.1), Key('space')],
     'Alfred launch': Key('cmd-space'),
     'undo that': Key('cmd-z'),
     'redo that': Key('cmd-shift-z'),
+    'run signature': '---=', # keyboard shortcut for my e-mail signature
 
      # Selecting text
     'select line': Key('cmd-right cmd-shift-left'),
     'select start': Key('cmd-shift-left'),
     'select end': Key('cmd-shift-right'),
-    'select word': Key('alt-shift-right'),
-    'select left word': Key('alt-shift-left'),
+    'select word': [Key('alt-left'), Key('alt-shift-right')],
     'select right': Key('shift-right'),
     'select left': Key('shift-left'),
 
-    'jump word': Key('alt-right'),
-    'jump left word': Key('alt-left'),
+    'jump word [right]': Key('alt-right'),
+    'jump word left': Key('alt-left'),
 
-    'go [to] top': Key('cmd-up'),
-    'go [to] bottom': Key('cmd-down'),
-    'go [to] end': Key('cmd-right'),
-    'go [to] start': Key('cmd-left'),
+    'go top': Key('cmd-up'),
+    'go bottom': Key('cmd-down'),
+    'go end': Key('cmd-right'),
+    'go start': Key('cmd-left'),
 
     "mac toggle dock": Key("cmd-alt-d"),
 })
