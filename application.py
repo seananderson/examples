@@ -13,8 +13,8 @@ def open_application(application):
 
 # get bundle: osascript -e 'id of app "app-name"'
 keymap = {
-     'chrome app': open_application('com.google.Chrome'),
-     'mac mail': open_application('com.apple.Mail'),
+     # 'chrome app': open_application('com.google.Chrome'),
+     # 'mac mail': open_application('com.apple.Mail'),
      'termite': open_application('com.googlecode.iterm2'),
 }
 
