@@ -81,53 +81,6 @@ def join_words(words, sep=' ', cap_first=False):
             out += word
     return out
 
-# # Alternative to only auto-capitalize I:
-# # from aegis on Slack
-# 
-# def parse_words(m):
-#     return list(map(parse_word, m.dgndictation[0]._words))
-# 
-# def insert(s):
-#     Str(s)(None)
-# 
-# def lower_not_i(s):
-#     return ' '.join([word.lower() if word != 'I' else 'I' for word in s.split(' ')])
-# 
-# def text(m):
-#     insert(lower_not_i(join_words(parse_words(m))))
-# 
-# def sentence_text(m):
-#     text = lower_not_i(join_words(parse_words(m)))
-#     insert(text.capitalize())
-# 
-# def word(m):
-#     text = join_words(list(map(parse_word, m.dgnwords[0]._words)))
-#     insert(lower_not_i(text))
-# 
-## Hook for replacement, from lexjacobs on Slack
-# 
-## better to use "I'll" etc
-# token_replace = {
-#     'et cetera': 'etc',
-#     'e-mail': 'email',
-#     'I\\pronoun': 'I',
-#     'I\'ll': 'I\'ll',
-#     'I\'m': 'I\'m',
-#     'I\'ve': 'I\'ve',
-#     'I\'d': 'I\'d',
-#     'meta-\\\\meta': 'meta',
-# }
-# 
-# def parse_word(word):
-#     word = str(word)
-#     if word in token_replace:
-#         word = token_replace.get(word)
-#     else:
-#         word = word.lower()
-#     word = word.lstrip('\\').split('\\', 1)[0]
-#     word = mapping.get(word, word)
-#     return word
-
 def parse_words(m):
    return list(map(parse_word, m.dgndictation[0]._words))
 
