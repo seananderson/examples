@@ -1,6 +1,5 @@
 # https://github.com/lexjacobs/talon_user/blob/master/application.py
-from talon.voice import Context, Key, Str, ui
-import time
+from talon.voice import Context, ui
 
 ctx = Context('application_launcher')
 

@@ -1,5 +1,5 @@
 from talon.voice import Word, Context, Key, Rep, Str, press
-from user.utils import parse_words_as_integer
+# from user.utils import parse_words_as_integer
 
 ctx = Context('RStudio', bundle='org.rstudio.RStudio')
 
@@ -34,13 +34,13 @@ ctx = Context('RStudio', bundle='org.rstudio.RStudio')
 ctx.keymap({
  # 'jump to line (0 | oh | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9)+': jump_to_line,
 
-  'expand select':                Key('shift-alt-cmd-up'),
-  'reduce select':                Key('shift-alt-cmd-down'),
+  'expand select':                 Key('shift-alt-cmd-up'),
+  'reduce select':                 Key('shift-alt-cmd-down'),
   # 'duplicate line': Key('alt-cmd-down'),
 
   'go to matching':                Key('ctrl-p'),
 
-  'pip':                          Key('tab'),
+  'pip':                           Key('tab'),
 
   # Console
 
@@ -52,7 +52,7 @@ ctx.keymap({
 
   # Source
 
-  'go to omni':                   Key('ctrl-.'),
+  'go to omni':                    Key('ctrl-.'),
 
   # 'New document': Key('cmd-shift-N'),
   # 'New document (Chrome only)': Key('cmd-shift-Alt-N'),
@@ -60,9 +60,9 @@ ctx.keymap({
   # 'Save active document': Key('cmd-S'),
   # 'Close active document (except on Chrome)': Key('cmd-W'),
   # 'Close active document (Chrome only)': Key('cmd-alt-W'),
-  'Close all tabs':               Key('cmd-shift-W'),
-  'run knitter':                  Key('cmd-shift-K'),
-  'kniter insert chunk':          Key('cmd-alt-i'),
+  'Close all tabs':                Key('cmd-shift-W'),
+  'run knitter':                   Key('cmd-shift-K'),
+  'kniter insert chunk':           Key('cmd-alt-i'),
   # 'Insert code section': Key('cmd-shift-R'),
 
   'eval [that]':                   Key('cmd-enter'),

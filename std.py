@@ -1,4 +1,4 @@
-from talon.voice import Word, Context, Key, Rep, RepPhrase, Str, press
+from talon.voice import Word, Context, Key, Str, press
 from talon import ctrl, clip
 import string
 import time
