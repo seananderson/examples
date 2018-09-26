@@ -40,10 +40,10 @@ ctx.keymap({
 
         "split screen":             Key("esc ctrl-w s"),
         "split screen vertically":  Key("esc ctrl-w v"),
-        "screen left":     Key("ctrl-h"),
-        "screen right":    Key("ctrl-l"),
-        "screen up":       Key("ctrl-k"),
-        "screen down":     Key("ctrl-j"),
+        "screen left":              Key("ctrl-h"),
+        "screen right":             Key("ctrl-l"),
+        "screen up":                Key("ctrl-k"),
+        "screen down":              Key("ctrl-j"),
 
         "comment line":             "gcc",
         "comment para":             "gcap",
@@ -111,7 +111,7 @@ ctx.keymap({
         "structure that":           ",rt",
         "name that":                ",rn",
 
-        "eval":                 Key("enter"),
+        "eval":                     Key("enter"),
 
         # https://github.com/pimentel/talon_user/blob/master/vim.py
         'jump till <dgndictation>': search_forward,
