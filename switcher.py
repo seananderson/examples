@@ -15,7 +15,7 @@ def switch_app(m):
         if app.name == full:
             app.focus()
             # TODO: replace sleep with a check to see when it is in foreground
-            time.sleep(0.25)
+            time.sleep(0.1)
             break
 
 def launch_app(m):
