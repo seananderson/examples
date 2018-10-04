@@ -255,7 +255,10 @@ keymap.update({
     'word axis': 'axis',
     'word paste': 'paste',
     'word to do': 'TODO: ',
-    'word fix me': 'FIXME: ',
+    'word down': 'down',
+    'word up': 'up',
+    'word left': 'left',
+    'word right': 'right',
 
     #'dickt in it': ['{}', Key('left')],
     #FIXME redefine# 'list in it': ['[]', Key('left')],
@@ -314,7 +317,7 @@ keymap.update({
     'app next': Key('cmd-tab'),
     'app last': Key('cmd-shift-tab'),
     'tab next': Key('ctrl-tab'),
-    'tab last': Key('ctrl-shift-tab'),
+    'tab preev': Key('ctrl-shift-tab'),
     'tab new': Key('cmd-t'),
 
     'scroll down': [Key('down')] * 30,

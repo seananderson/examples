@@ -27,8 +27,8 @@ ctx.keymap({
 
         "dosh line":                [Key('d')] * 2,
         "yank line":                [Key('y')] * 2,
-        "vim top":                  [Key("g")] * 2,
-        "vim bottom":               Key("esc G"),
+        "go to top":                  [Key("g")] * 2,
+        "go to bottom":               Key("esc G"),
         "open":                     Key("esc o"),
         "big open":                 Key("esc O"),
         "paste":                    Key("esc p"),
@@ -112,8 +112,11 @@ ctx.keymap({
         "name that":                ",rn",
 
         "eval":                     Key("enter"),
+        "eval chunk":                     Key(",cc"),
 
         # https://github.com/pimentel/talon_user/blob/master/vim.py
         'jump till <dgndictation>': search_forward,
         'jump back till <dgndictation>': search_reverse,
+
+        'go back': 'g;',
 })

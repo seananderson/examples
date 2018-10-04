@@ -175,6 +175,7 @@ ctx.keymap({
   'go to environment':            Key('ctrl-8'),
   'go to git':                    Key('ctrl-9'),
   'go to build':                  Key('ctrl-0'),
+  'go to terminal':                  Key('alt-shift-T'),
   # 'Sync Editor & PDF Preview': Key('cmd-F8'),
   # 'Show Keyboard Shortcut Reference': Key('alt-shift-K'),
 
