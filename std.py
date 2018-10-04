@@ -349,6 +349,8 @@ keymap.update({
     'go bottom': Key('cmd-down'),
     'go end': Key('cmd-right'),
     'go start': Key('cmd-left'),
+    'page up': Key('pageup'),
+    'page down': Key('pagedown'),
 
     "mac toggle dock": Key("cmd-alt-d"),
 })
