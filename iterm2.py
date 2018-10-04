@@ -44,6 +44,7 @@ ctx.keymap({
     'run (git|get) show': 'git show ',
     'run (git|get) tag': 'git tag ',
     'run (git|get) status': 'git status\n',
+    'run (git|get) stash': 'git stash',
     'run (git|get) commit all': 'git commit -av\n',
     'run (git|get) word-diff': 'git diff --color-words\n',
     'run (git|get) log': "git lg\n",
