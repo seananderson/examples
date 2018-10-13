@@ -44,6 +44,10 @@ ctx.keymap({
         "screen right":             Key("ctrl-l"),
         "screen up":                Key("ctrl-k"),
         "screen down":              Key("ctrl-j"),
+        "screen close":             Key("esc ctrl-w c"),
+        "close other splits":       [Key("escape"), ':only', Key('enter')],
+
+        # 'buff-switch': Key(':')
 
         "comment line":             "gcc",
         "comment para":             "gcap",
@@ -52,17 +56,19 @@ ctx.keymap({
         "mort":                     Key("ctrl-d"),
         "lest":                     Key("ctrl-u"),
 
-        "record macro":             "qq",
-        "end macro":                "q",
+        'join': Key('esc shift-J'),
 
-        "format para":              "Q",
+        "record macro":             "esc qq",
+        "end macro":                "esc q",
 
-        "mark that":                "ma",
-        "jump mark":                "`a",
-        "copy mark":                "y`a",
-        "dosh mark":                "d`a",
-        "format mark":              "gq`a",
-        "remove mark":              "m -",
+        "format para":              "esc Q",
+
+        "mark that":                "esc ma",
+        "jump mark":                "esc `a",
+        "copy mark":                "esc y`a",
+        "dosh mark":                "esc d`a",
+        "format mark":              "esc gq`a",
+        "remove mark":              "esc m -",
 
         "pip":                      Key("ctrl-n"),
         "pop":                      Key("ctrl-p"),
@@ -75,10 +81,13 @@ ctx.keymap({
         "edit file":                [Key("escape"), ':e '],
         "edit args":                ":args *.",
         "write file":               [Key("escape"), ':update', Key("enter")],
-        "write and exit":           ":wq!",
-        "close buffer":             ":q\n",
-        "delete buffer":            ":bd\n",
-        "write all files":          ":wall\n",
+        "write and exit":           "esc :wq!",
+        "buff quit":                "esc :q\n",
+        'buff delete':              "esc :bd\n",
+        'buff next':                "esc :bn\n",
+        'buff preeve':              "esc :bp\n",
+        'buff list':                "esc :ls\n",
+        "write all files":          "esc :wall\n",
 
         "fuzzy buff":               [Key("escape"), ":Buffers", Key("enter")],
         "fuzzy close":              [Key("ctrl-c")],
@@ -93,23 +102,23 @@ ctx.keymap({
 #        "fuzzy help": esc + Key("colon,s-H,e,l,p,enter"),
 #        "fuzzy grep": esc + Key("colon,s-A,g,enter"),
 
-        "vim theme solarize dark":  ":colo flattened_dark\n",
-        "vim theme solarize light": ":colo flattened_light\n",
-        "vim theme (soul|Seoul)":   ":colo seoul256\n",
-        "vim toggle lights":        ":ToggleBG\n",
-        "vim toggle spelling":      ":setlocal spell!\n",
-        "vim toggle obsession":     ":Obsession!\n",
-        "vim toggle numbers":       ":set relativenumber!\n",
+        "vim theme solarize dark":  "esc :colo flattened_dark\n",
+        "vim theme solarize light": "esc :colo flattened_light\n",
+        "vim theme (soul|Seoul)":   "esc :colo seoul256\n",
+        "vim toggle lights":        "esc :ToggleBG\n",
+        "vim toggle spelling":      "esc :setlocal spell!\n",
+        "vim toggle obsession":     "esc :Obsession!\n",
+        "vim toggle numbers":       "esc :set relativenumber!\n",
 
         # R specific stuff
         "pipe that":                " %>% ",
         "assign that":              " <- ",
 
-        "argument that":            ",ra",
-        "help that":                ",rh",
-        "print that":               ",rp",
-        "structure that":           ",rt",
-        "name that":                ",rn",
+        "argument that":            "esc ,ra",
+        "help that":                "esc ,rh",
+        "print that":               "esc ,rp",
+        "structure that":           "esc ,rt",
+        "name that":                "esc ,rn",
 
         "eval":                     Key("enter"),
         "eval chunk":                     Key(",cc"),
