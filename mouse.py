@@ -48,8 +48,8 @@ def mouse_release(m):
     ctrl.mouse_click(x, y, up=True)
 
 keymap = {
-    'righty': delayed_right_click,
-    '(ticka|tick|ticker)': delayed_click,
+    'right (tick|click)': delayed_right_click,
+    '(tick|click)': delayed_click,
     'dooble': delayed_dubclick,
     #'tripclick': delayed_tripclick,
     'dragger': mouse_drag,
