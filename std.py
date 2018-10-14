@@ -16,7 +16,7 @@ alpha.update({'sky %s' % word: letter for word, letter in zip(alpha_alt, string.
 # modifier key mappings
 fkeys = [(f'press F {i}', f'f{i}') for i in range(1, 13)]
 keys = [
-    'left', 'right', 'up', 'down', 'shift', 'tab', 'escape', 'enter', 'space',
+    'left', 'right', 'up', 'down', 'tab', 'escape', 'enter', 'space',
     'backspace', 'delete', 'home', 'pageup', 'pagedown', 'end',
 ]
 keys = alnum + [(k, k) for k in keys]
@@ -43,6 +43,7 @@ alpha.update({'(command | cod) shift %s' % k: Key('cmd-shift-%s' % v) for k, v i
 alpha.update({'(command | cod) alt shift %s' % k: Key('cmd-alt-shift-%s' % v) for k, v in keys})
 alpha.update({'alt %s' % k: Key('alt-%s' % v) for k, v in keys})
 alpha.update({'alt shift %s' % k: Key('alt-%s' % v) for k, v in keys})
+alpha.update({'shift %s' % k: Key('alt-%s' % v) for k, v in keys})
 
 numerals = {
     'duo': '2',
