@@ -80,7 +80,7 @@ def press_keys(m):
 
 ctx = Context('basic_keys')
 ctx.keymap({
-    'sky {basic_keys.alphabet}+ [(lowercase | sunk)]': uppercase_letters,
+    'sky {basic_keys.alphabet}+ [lower]': uppercase_letters,
     '{basic_keys.modifiers}* {basic_keys.alphabet}+': press_keys,
     '{basic_keys.modifiers}* {basic_keys.digits}+': press_keys,
     '{basic_keys.modifiers}* {basic_keys.keys}+': press_keys,
