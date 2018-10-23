@@ -115,9 +115,9 @@ ctx = Context('input')
 ctx.keymap({
     'say <dgndictation> [over]': text,
     'cap <dgndictation> [over]': sentence_text,
-    'calm <dgndictation> [over]': [', ', text],
-    'period <dgndictation> [over]': ['. ', sentence_text],
-    'more <dgndictation> [over]': [' ', text],
+    #'calm <dgndictation> [over]': [', ', text],
+    #'period <dgndictation> [over]': ['. ', sentence_text],
+    #'more <dgndictation> [over]': [' ', text],
     'word <dgnwords>': word,
     '(%s)+ [<dgndictation>]' % (' | '.join(formatters)): FormatText,
 
@@ -156,16 +156,16 @@ ctx.keymap({
     '(dot dot dot | dotdotdot)': '...',
     '(dot dot | dotdot)': '..',
 
-    'extension python': '.py',
-    'extension R': '.R',
-    'extension see plus plus': '.cpp',
-    'extension Stan': '.stan',
-    'extension markdown': '.md',
-    'extension R markdown': '.Rmd',
+    #'extension python': '.py',
+    #'extension R': '.R',
+    #'extension see plus plus': '.cpp',
+    #'extension Stan': '.stan',
+    #'extension markdown': '.md',
+    #'extension R markdown': '.Rmd',
 
     'args': ['()', Key('left')],
-    'index': ['[]', Key('left')],
-    'block': [' {}', Key('left enter enter up tab')],
+    # 'index': ['[]', Key('left')],
+    #'block': [' {}', Key('left enter enter up tab')],
 
     'state if': ['if ()', Key('left')],
     'state else if': [' else if ()', Key('left')],
@@ -197,6 +197,7 @@ ctx.keymap({
     'word axis': 'axis',
     'word paste': 'paste',
     'word to do': 'TODO: ',
+    'word ref': 'REF',
     'word down': 'down',
     'word up': 'up',
     'word left': 'left',
@@ -223,7 +224,7 @@ ctx.keymap({
     #'[op] divide equals': ' /= ',
     #'[op] mod equals': ' %= ',
 
-    '(op | is) tilde from': ' ~ ',
+    '(op | is) tilde': ' ~ ',
     '(op | is) greater than': ' > ',
     '(op | is) less than': ' < ',
     '(op | is) an element of': ' %in% ',
@@ -253,8 +254,8 @@ ctx.keymap({
     'window last': Key('cmd-shift-`'),
     'window hide': Key('cmd-h'),
     'window hide others': Key('cmd-alt-h'),
-    'quit that': Key('cmd-q'),
-    'save that': Key('cmd-s'),
+    #'quit that': Key('cmd-q'),
+    #'save that': Key('cmd-s'),
     'app next': Key('cmd-tab'),
     'app last': Key('cmd-shift-tab'),
     'tab next': Key('ctrl-tab'),
@@ -273,7 +274,7 @@ ctx.keymap({
     'Alfred launch': Key('cmd-space'),
     'undo that': Key('cmd-z'),
     'redo that': Key('cmd-shift-z'),
-    'run signature': '---=', # keyboard shortcut for my e-mail signature
+    'run dfo signature': '---=', # keyboard shortcut for my e-mail signature
 
      # Selecting text
     'select line': Key('cmd-right cmd-shift-left'),
