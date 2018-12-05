@@ -274,7 +274,7 @@ ctx.keymap({
     'Alfred launch': Key('cmd-space'),
     'undo that': Key('cmd-z'),
     'redo that': Key('cmd-shift-z'),
-    'run dfo signature': '---=', # keyboard shortcut for my e-mail signature
+    'insert dfo signature': '---=', # keyboard shortcut for my e-mail signature
 
      # Selecting text
     'select line': Key('cmd-right cmd-shift-left'),
