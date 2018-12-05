@@ -34,8 +34,8 @@ ctx = Context('RStudio', bundle='org.rstudio.RStudio')
 ctx.keymap({
  # 'jump to line (0 | oh | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9)+': jump_to_line,
 
-  'expand select':                 Key('shift-alt-cmd-up'),
-  'reduce select':                 Key('shift-alt-cmd-down'),
+  #'expand selection':              Key('shift-alt-cmd-up'),
+  #'reduce selection':              Key('shift-alt-cmd-down'),
   # 'duplicate line': Key('alt-cmd-down'),
 
   'go to matching':                Key('ctrl-p'),
@@ -52,7 +52,7 @@ ctx.keymap({
 
   # Source
 
-  'go to omni':                    Key('ctrl-.'),
+  'go to omni':                   Key('ctrl-.'),
 
   # 'New document': Key('cmd-shift-N'),
   # 'New document (Chrome only)': Key('cmd-shift-Alt-N'),
@@ -60,24 +60,24 @@ ctx.keymap({
   # 'Save active document': Key('cmd-S'),
   # 'Close active document (except on Chrome)': Key('cmd-W'),
   # 'Close active document (Chrome only)': Key('cmd-alt-W'),
-  'Close all tabs':                Key('cmd-shift-W'),
-  'run knitter':                   Key('cmd-shift-K'),
-  'kniter insert chunk':           Key('cmd-alt-i'),
+  'close all tabs':               Key('cmd-shift-w'),
+  'run knitter':                  Key('cmd-shift-k'),
+  'insert knitter chunk':         Key('cmd-alt-i'),
   # 'Insert code section': Key('cmd-shift-R'),
 
-  'eval [that]':                   Key('cmd-enter'),
-  # 'eval current line/selection (retain cursor position)': Key('alt-enter'),
-  'eval previous':                 Key('cmd-shift-P'),
+  'run that':                     Key('cmd-enter'),
+  # 'run current line/selection (retain cursor position)': Key('alt-enter'),
+  'run previous':                 Key('cmd-shift-P'),
   # 'eval current document': Key('cmd-alt-R'),
-  'eval from top':                 Key('cmd-alt-b'),
-  'eval to end':                   Key('cmd-alt-e'),
-  'eval (function|funk)':          Key('cmd-alt-f'),
-  # 'eval section':              Key('cmd-alt-t'),
-  'eval (previous|preeve) chunks': Key('cmd-alt-p'),
-  'eval chunk':                    Key('cmd-alt-c'),
-  'eval next chunk':               Key('cmd-alt-n'),
+  'run from top':                 Key('cmd-alt-b'),
+  'run to end':                   Key('cmd-alt-e'),
+  'run (function|funk)':          Key('cmd-alt-f'),
+  # 'eval section':               Key('cmd-alt-t'),
+  'run previous chunks':          Key('cmd-alt-p'),
+  'run chunk':                    Key('cmd-alt-c'),
+  'run next chunk':               Key('cmd-alt-n'),
   # 'Source a file': Key('cmd-shift-O'),
-  'eval all':                      Key('cmd-shift-S'),
+  'run all':                      Key('cmd-shift-S'),
   # 'eval and echo all':         Key('cmd-shift-enter'),
 
   # 'Fold Selected': Key('cmd-alt-L'),
@@ -85,17 +85,17 @@ ctx.keymap({
   # 'Fold All': Key('cmd-alt-O'),
   # 'Unfold All': Key('cmd-shift-alt-O'),
 
-  'go to line':                   Key('cmd-shift-alt-G'),
-  'go to section':                Key('cmd-shift-alt-J'),
+  'go to line':                   Key('cmd-shift-alt-g'),
+  'go to section':                Key('cmd-shift-alt-j'),
 
   'go to tab':                    Key('ctrl-shift-.'),
-  'go to Previous tab':           Key('ctrl-f11'),
-  'go to Next tab':               Key('ctrl-f12'),
-  'go to First tab':              Key('ctrl-shift-f11'),
-  'go to Last tab':               Key('ctrl-shift-f12'),
+  'go to previous tab':           Key('ctrl-f11'),
+  'go to next tab':               Key('ctrl-f12'),
+  #'go to first tab':              Key('ctrl-shift-f11'),
+  #'go to last tab':               Key('ctrl-shift-f12'),
 
-  '(jump | go) back':             Key('cmd-F9'),
-  '(jump | go) forward':          Key('cmd-F10'),
+  'jump back':                    Key('cmd-F9'),
+  'jump forward':                 Key('cmd-F10'),
 
   # 'Extract function from selection': Key('cmd-alt-X'),
   # 'Extract variable from selection': Key('cmd-alt-V'),
@@ -116,18 +116,18 @@ ctx.keymap({
   'select to paren':              Key('ctrl-shift-E'),
   # 'Select to Matching Paren': Key('ctrl-shift-Alt-E'),
 
-  'Add Cursor up':                Key('ctrl-alt-up'),
-  'Add Cursor down':              Key('ctrl-alt-down'),
+  'add cursor up':                Key('ctrl-alt-up'),
+  'add cursor down':              Key('ctrl-alt-down'),
 
   # 'Move Active Cursor Up': Key('ctrl-Alt-shift-Up'),
   # 'Move Active Cursor Down': Key('ctrl-Alt-shift-Down'),
 
-  'Find and Replace':             Key('cmd-f'),
-  'Find Next':                    Key('cmd-g'),
-  'Find Previous':                Key('cmd-shift-G'),
-  'find with a selection':        Key('cmd-e'),
+  'find and replace':             Key('cmd-f'),
+  'find next':                    Key('cmd-g'),
+  'find previous':                Key('cmd-shift-G'),
+  'find with selection':          Key('cmd-e'),
   # 'Replace and Find':         Key('cmd-shift-J'),
-  'Find in Files':                Key('cmd-shift-F'),
+  'find in files':                Key('cmd-shift-F'),
 
   'run spell check':              Key('f7'),
 
@@ -211,7 +211,7 @@ ctx.keymap({
 
   # Session
 
-  'run restart R':                Key('cmd-shift-f10'),
+  'restart R session':                Key('cmd-shift-f10'),
 
   # Terminal
 
