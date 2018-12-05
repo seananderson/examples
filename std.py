@@ -121,8 +121,8 @@ ctx.keymap({
     'word <dgnwords>': word,
     '(%s)+ [<dgndictation>]' % (' | '.join(formatters)): FormatText,
 
-    'chuck': Key('backspace'),
     'kill': Key('delete'),
+    '(chuck|delete)': Key('backspace'),
 
     'slap': Key('enter'),
     'slap that': [Key('cmd-right'), lambda m: time.sleep(0.05), Key('enter')],
