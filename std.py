@@ -209,9 +209,8 @@ ctx.keymap({
     #'state past': 'pass',
 
     'plus': '+',
-    'op (equal | equals | assign)': ' = ',
-    'equals': ' = ',
-    'equal symbol': '=',
+    'op (equal | equals)': ' = ',
+    'equals': '=',
     'op (minus | hyphen)': ' - ',
     'op (plus | add)': ' + ',
     'op (times | asterisk | star)': ' * ',

@@ -52,7 +52,7 @@ keymap = {
     '(tick|click)': delayed_click,
     'dooble': delayed_dubclick,
     #'tripclick': delayed_tripclick,
-    'dragger': mouse_drag,
-    'releaser': mouse_release,
+    'drag mouse': mouse_drag,
+    'release mouse': mouse_release,
 }
 ctx.keymap(keymap)
