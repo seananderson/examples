@@ -1,4 +1,4 @@
-from talon.voice import Word, Context, Key, Rep, Str, press
+from talon.voice import Context, Key
 
 ctx = Context('RStudio', bundle='org.rstudio.RStudio')
 
