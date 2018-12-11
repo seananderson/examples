@@ -296,4 +296,17 @@ ctx.keymap({
     "mac toggle dock": Key("cmd-alt-d"),
 
     'copy active bundle': copy_bundle,
+
+     # The following gives you 1 second to hover your mouse over your application
+     # of choice: adjust timing as desired or abort early with 'choose app'.
+    'switch apps': lambda m: (
+        ctrl.key_press('cmd', cmd=True, down=True),
+        press('tab'),
+        time.sleep(1.0),
+        ctrl.key_press('cmd', cmd=True, up=True),
+    ),
+    'choose app': lambda m: (
+        ctrl.key_press('cmd', cmd=True, up=True),
+    ),
+
 })
