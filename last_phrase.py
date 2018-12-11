@@ -5,13 +5,14 @@
 
 import os
 from atomicwrites import atomic_write
+from datetime import datetime
 
 from talon import app, webview, ui
 from talon.engine import engine
 from talon_init import TALON_HOME
 
 path = os.path.join(TALON_HOME, 'last_phrase')
-path_log = os.path.join(TALON_HOME, 'phrase.log')
+path_log = os.path.join(TALON_HOME, 'phrase_log.csv')
 WEBVIEW = True
 NOTIFY = False
 
@@ -31,7 +32,8 @@ def on_phrase(j):
         with atomic_write(path, overwrite=True) as f:
             f.write(phrase)
         with open(path_log, 'a') as f:
-            f.write(phrase + '\n')
+            f.write(phrase + ', ' + str(datetime.now()) + ', ' + 
+            	ui.active_app().bundle + '\n')
             
     if WEBVIEW and cmd in ('p.end', 'p.hypothesis') and phrase:
         body = phrase.replace(' ', '&nbsp;')
