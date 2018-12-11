@@ -7,7 +7,7 @@ ctx = Context('spectacle')
 
 keymap = {
     'window center':         Key('shift-cmd-alt-C'), # Note this is not the default shortcut
-    'window max':            Key('cmd-alt-f'),
+    'window max':            Key('shift-cmd-alt-f'), # not default; conflicts with RStudio
 
     'window left':           Key('cmd-alt-left'),
     'window right':          Key('cmd-alt-right'),
