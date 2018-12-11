@@ -305,8 +305,11 @@ ctx.keymap({
         time.sleep(1.0),
         ctrl.key_press('cmd', cmd=True, up=True),
     ),
-    'choose app': lambda m: (
+    '(choose app|release app switcher)': lambda m: (
         ctrl.key_press('cmd', cmd=True, up=True),
     ),
-
+    'hold app switcher': lambda m: (
+        ctrl.key_press('cmd', cmd=True, down=True),
+        press('tab'),
+    ),
 })
