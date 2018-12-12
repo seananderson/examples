@@ -28,7 +28,6 @@ ctx.keymap(
         "go to talon": go_to_path("~/.talon/user"),
         "go to dropbox": go_to_path("~/Dropbox/"),
         "go to DFO": go_to_path("~/Dropbox/dfo/"),
-        "go to postdoc admin": go_to_path("~/Dropbox/dfo/accasp-postdoc/"),
         "go to G F synopsis": go_to_path("~/src/gfsynopsis/"),
         "go to G F plot": go_to_path("~/src/gfplot/"),
     }

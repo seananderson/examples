@@ -7,9 +7,6 @@ from user.utils import m_to_number, numerals
 ctx = Context('repeater')
 
 def repeat(m):
-    # TODO: This could be made more intelligent:
-    #         * Apply a timeout after which the command will not repeat previous actions
-    #         * Prevent stacking of repetitions upon previous repetitions
     repeat_count = m_to_number(m)
 
     if repeat_count != None and repeat_count >= 2:
@@ -22,5 +19,5 @@ ctx.keymap({
   #  'creek': RepPhrase(1), # how is this different from Rep()
     'twice': Rep(1),
     'thrice': Rep(2),
-    "(rep | repple) " + numerals: repeat,
+    "rep" + numerals: repeat,
     })

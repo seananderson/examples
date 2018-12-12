@@ -115,9 +115,9 @@ ctx = Context('input')
 ctx.keymap({
     'say <dgndictation> [over]': text,
     'cap <dgndictation> [over]': sentence_text,
-    #'calm <dgndictation> [over]': [', ', text],
-    #'period <dgndictation> [over]': ['. ', sentence_text],
-    #'more <dgndictation> [over]': [' ', text],
+    'comma <dgndictation> [over]': [', ', text],
+    'period <dgndictation> [over]': ['. ', sentence_text],
+    'more <dgndictation> [over]': [' ', text],
     'word <dgnwords>': word,
     '(%s)+ [<dgndictation>]' % (' | '.join(formatters)): FormatText,
 
@@ -198,10 +198,10 @@ ctx.keymap({
     'word paste': 'paste',
     'word to do': 'TODO: ',
     'word ref': 'REF',
-    'word down': 'down',
-    'word up': 'up',
-    'word left': 'left',
-    'word right': 'right',
+    # 'word down': 'down',
+    # 'word up': 'up',
+    # 'word left': 'left',
+    # 'word right': 'right',
 
     #'dickt in it': ['{}', Key('left')],
     #FIXME redefine# 'list in it': ['[]', Key('left')],
@@ -264,14 +264,14 @@ ctx.keymap({
     'scroll down': [Key('down')] * 30,
     'scroll up': [Key('up')] * 30,
 
-    'copy that': Key('cmd-c'),
-    'cut that': Key('cmd-x'),
-    'paste that': Key('cmd-v'),
+    # 'copy that': Key('cmd-c'),
+    # 'cut that': Key('cmd-x'),
+    # 'paste that': Key('cmd-v'),
     'Alfred paste': Key('cmd-shift-v'),
     'Alfred paste that': [Key('cmd-shift-v'), lambda m: time.sleep(0.1), Key('enter')],
     'Alfred go to': [Key('cmd-space'), lambda m: time.sleep(0.1), Key('space')],
     'Alfred launch': Key('cmd-space'),
-    'undo that': Key('cmd-z'),
+    # 'undo that': Key('cmd-z'),
     'redo that': Key('cmd-shift-z'),
     'insert dfo signature': '---=', # keyboard shortcut for my e-mail signature
 
@@ -280,16 +280,16 @@ ctx.keymap({
     'select start': Key('cmd-shift-left'),
     'select end': Key('cmd-shift-right'),
     'select word': [Key('alt-left'), Key('alt-shift-right')],
-    'select right': Key('shift-right'),
-    'select left': Key('shift-left'),
+    # 'select right': Key('shift-right'),
+    # 'select left': Key('shift-left'),
 
-    'jump word [right]': Key('alt-right'),
-    'jump word left': Key('alt-left'),
+    # 'jump word [right]': Key('alt-right'),
+    # 'jump word left': Key('alt-left'),
 
-    'go top': Key('cmd-up'),
-    'go bottom': Key('cmd-down'),
-    'go end': Key('cmd-right'),
-    'go start': Key('cmd-left'),
+    # 'go top': Key('cmd-up'),
+    # 'go bottom': Key('cmd-down'),
+    # 'go end': Key('cmd-right'),
+    # 'go start': Key('cmd-left'),
     'page up': Key('pageup'),
     'page down': Key('pagedown'),
 
@@ -298,18 +298,29 @@ ctx.keymap({
     'copy active bundle': copy_bundle,
 
      # The following gives you 1 second to hover your mouse over your application
-     # of choice: adjust timing as desired or abort early with 'choose app'.
+     # of choice; adjust timing as desired or abort early with 'choose app'.
     'switch apps': lambda m: (
         ctrl.key_press('cmd', cmd=True, down=True),
         press('tab'),
         time.sleep(1.0),
         ctrl.key_press('cmd', cmd=True, up=True),
     ),
-    '(choose app|release app switcher)': lambda m: (
+    '(choose app|release app switcher|release command)': lambda m: (
         ctrl.key_press('cmd', cmd=True, up=True),
     ),
     'hold app switcher': lambda m: (
         ctrl.key_press('cmd', cmd=True, down=True),
         press('tab'),
     ),
+    'hold command': lambda m: (
+        ctrl.key_press('cmd', cmd=True, down=True),
+    ),
+    # Multiple cursors via mouse in Sublime Text and RStudio:
+    'hold option command': lambda m: (
+        ctrl.key_press('cmd', cmd=True, alt=True, down=True),
+    ),
+    'release option command': lambda m: (
+        ctrl.key_press('cmd', cmd=True, alt=True, up=True),
+    ),
+
 })

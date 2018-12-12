@@ -3,7 +3,7 @@ from talon.voice import Context, Key
 ctx = Context('mail', bundle='com.apple.mail')
 
 keymap =  {
-    'message send please': Key('cmd-shift-d'),
+    'message send that': Key('cmd-shift-d'),
     'message viewer new': Key('cmd-shift-n'),
     'message new': Key('cmd-n'),
     'message reply': Key('cmd-r'),
