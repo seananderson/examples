@@ -117,7 +117,7 @@ ctx.keymap({
     'cap <dgndictation> [over]': sentence_text,
     'comma <dgndictation> [over]': [', ', text],
     'period <dgndictation> [over]': ['. ', sentence_text],
-    'more <dgndictation> [over]': [' ', text],
+    # 'more <dgndictation> [over]': [' ', text],
     'word <dgnwords>': word,
     '(%s)+ [<dgndictation>]' % (' | '.join(formatters)): FormatText,
 
