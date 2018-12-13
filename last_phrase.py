@@ -1,9 +1,10 @@
 # Original draft script posted to Slack by aegis under a BSD 0 license.
 # This version contains some modifications such as placing the webview
-# in the top left corner and writing a `phrase.log` text file in
-# ~/.talon/phrase.log
+# in the top left corner, writing a log text file in
+# ~/.talon/phrase_log.csv and not printing or logging input to 1Password.
 
 import os
+import re
 from atomicwrites import atomic_write
 from datetime import datetime
 
@@ -28,14 +29,15 @@ def parse_phrase(phrase):
 def on_phrase(j):
     phrase = parse_phrase(j.get('phrase', []))
     cmd = j['cmd']
-    if cmd == 'p.end' and phrase:
+    app = ui.active_app().bundle
+    private = bool(re.search('onepassword', app))
+    if cmd == 'p.end' and phrase and not private:
         with atomic_write(path, overwrite=True) as f:
             f.write(phrase)
         with open(path_log, 'a') as f:
-            f.write(phrase + ', ' + str(datetime.now()) + ', ' + 
-            	ui.active_app().bundle + '\n')
-            
-    if WEBVIEW and cmd in ('p.end', 'p.hypothesis') and phrase:
+            f.write(phrase + ', ' + str(datetime.now()) + ', ' + app + '\n')
+
+    if WEBVIEW and cmd in ('p.end', 'p.hypothesis') and phrase and not private:
         body = phrase.replace(' ', '&nbsp;')
         if cmd == 'p.hypothesis':
             webview.render("<i>{{ phrase }}</i>", phrase=body)
