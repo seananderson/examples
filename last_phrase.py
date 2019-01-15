@@ -17,11 +17,11 @@ path_log = os.path.join(TALON_HOME, 'phrase_log.csv')
 WEBVIEW = True
 NOTIFY = False
 
-if WEBVIEW: 
-    webview = webview.Webview()
-    webview.move(0, ui.main_screen().height)
-    webview.body = '<i>[waiting&nbsp;for&nbsp;phrase]</i>'
-    webview.show()
+# if WEBVIEW: 
+#     webview = webview.Webview()
+#     webview.move(0, ui.main_screen().height)
+#     webview.body = '<i>[waiting&nbsp;for&nbsp;phrase]</i>'
+#     webview.show()
     
 def parse_phrase(phrase):
     return ' '.join(word.split('\\')[0] for word in phrase)
@@ -37,13 +37,13 @@ def on_phrase(j):
         with open(path_log, 'a') as f:
             f.write(phrase + ', ' + str(datetime.now()) + ', ' + app + '\n')
 
-    if WEBVIEW and cmd in ('p.end', 'p.hypothesis') and phrase and not private:
-        body = phrase.replace(' ', '&nbsp;')
-        if cmd == 'p.hypothesis':
-            webview.render("<i>{{ phrase }}</i>", phrase=body)
-        else:
-            webview.render("{{ phrase }}", phrase=body)
-            
+    #if WEBVIEW and cmd in ('p.end', 'p.hypothesis') and phrase and not private:
+    #    body = phrase.replace(' ', '&nbsp;')
+    #    if cmd == 'p.hypothesis':
+    #        webview.render("<i>{{ phrase }}</i>", phrase=body)
+    #    else:
+    #        webview.render("{{ phrase }}", phrase=body)
+    #        
     if NOTIFY and cmd == 'p.end' and phrase:
         app.notify(body=phrase)
         
