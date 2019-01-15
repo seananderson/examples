@@ -6,30 +6,30 @@ from talon.voice import Key, Context
 ctx = Context('spectacle')
 
 keymap = {
-    'window center':         Key('shift-cmd-alt-C'), # Note this is not the default shortcut
-    'window max':            Key('shift-cmd-alt-f'), # not default; conflicts with RStudio
+    'snap center':           Key('shift-cmd-alt-C'), # Note this is not the default shortcut
+    'snap full screen':      Key('shift-cmd-alt-f'), # not default; conflicts with RStudio
+  
+    'snap left':             Key('cmd-alt-left'),
+    'snap right':            Key('cmd-alt-right'),
+    'snap top':              Key('cmd-alt-top'),
+    'snap bottom':           Key('cmd-alt-bottom'),
+  
+    'snap top left':         Key('cmd-ctrl-left'),
+    'snap bottom left':      Key('cmd-ctrl-shift-left'),
+    'snap top right':        Key('cmd-ctrl-right'),
+    'snap bottom right':     Key('cmd-ctrl-shift-right'),
 
-    'window left':           Key('cmd-alt-left'),
-    'window right':          Key('cmd-alt-right'),
-    'window top':            Key('cmd-alt-top'),
-    'window bottom':         Key('cmd-alt-bottom'),
+    'snap next display':     Key('cmd-ctrl-alt-right'),
+    'snap previous display': Key('cmd-ctrl-alt-left'),
 
-    'window upper left':     Key('cmd-ctrl-left'),
-    'window lower left':     Key('cmd-ctrl-shift-left'),
-    'window upper right':    Key('cmd-ctrl-right'),
-    'window lower right':    Key('cmd-ctrl-shift-right'),
-
-    # 'window next display':     Key('cmd-ctrl-alt-right'),
-    # 'window previous display': Key('cmd-ctrl-alt-left'),
-
-    'window next third':     Key('ctrl-alt-right'),
-    'window previous third': Key('ctrl-alt-left'),
-
-    'window larger':         Key('shift-ctrl-alt-right'),
-    'window smaller':        Key('shift-ctrl-alt-left'),
-
-    'window undo':           Key('cmd-alt-z'),
-    'window redo':           Key('cmd-alt-shift-z'),
+    'snap next third':       Key('ctrl-alt-right'),
+    'snap previous third':   Key('ctrl-alt-left'),
+  
+    'snap larger':           Key('shift-ctrl-alt-right'),
+    'snap smaller':          Key('shift-ctrl-alt-left'),
+  
+    'snap undo':             Key('cmd-alt-z'),
+    'snap redo':             Key('cmd-alt-shift-z'),
 }
 
 ctx.keymap(keymap)
