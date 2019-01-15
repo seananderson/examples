@@ -97,6 +97,19 @@ ctx.keymap({
     'snap top right':    grid(2, 1, 2, 2),
     'snap bottom left':  grid(1, 2, 2, 2),
     'snap bottom right': grid(2, 2, 2, 2),
+    'snap top left':     grid(1, 1, 2, 2),
+
+    'snap third left':          grid(1, 1, 3, 1),
+    'snap third middle':        grid(2, 1, 3, 1),
+    'snap third right':         grid(3, 1, 3, 1),
+
+    'snap top third left':      grid(1, 1, 3, 2),
+    'snap bottom third left':   grid(1, 3, 3, 2),
+    'snap top third middle':    grid(2, 1, 3, 2),
+    'snap bottom third middle': grid(2, 3, 3, 2),    
+    'snap top third right':     grid(3, 1, 3, 2),
+    'snap bottom third right':  grid(3, 3, 3, 2),
+
     'snap screen':       grid(1, 1, 1, 1),
     'snap next':         next_screen,
     'snap last':         previous_screen,
