@@ -4,6 +4,8 @@ from talon_init import TALON_HOME, TALON_PLUGINS, TALON_USER
 import string
 import time
 
+# from user.utils import parse_word, parse_words
+
 # cleans up some Dragon output from <dgndictation>
 mapping = {
     'semicolon': ';',
@@ -59,20 +61,16 @@ def surround(by):
 formatters = {
     'camel':     (True,  lambda i, word, _: word if i == 0 else word.capitalize()),
     'score':     (True,  lambda i, word, _: word if i == 0 else '_'+word.lower()),
-    'smash':     (True,  lambda i, word, _: word.lower()),
-    'jumble':    (True,  lambda i, word, _: word.lower()),
+    '(smash|jumble)':     (True,  lambda i, word, _: word.lower()),
     'jive':      (True,  lambda i, word, _: word.lower() if i == 0 else '-'+word.lower()),
     'titlecase': (False, lambda i, word, _: word.capitalize()),
     'uppercase': (False, lambda i, word, _: word.upper()),
     'double-string':    (False, surround('"')),
     'single-string': (False, surround("'")),
     'padded':    (False, surround(" ")),
-    'pathify':   (True,  lambda i, word, _: word.lower() if i == 0 else '/'+word.lower()),
     'dotify':    (True,  lambda i, word, _: word.lower() if i == 0 else '.'+word.lower()),
-
     'thrack':    (True,  lambda i, word, _: word.lower()[0:3]), # first 3 letters of word
     'quattro':   (True,  lambda i, word, _: word.lower()[0:4]), # first 4 ...
-    'quintro':   (True,  lambda i, word, _: word.lower()[0:5]), # first 5 ...
 }
 
 def FormatText(m):
@@ -173,19 +171,8 @@ ctx.keymap({
     'state for': ['for ()', Key('left')],
     'state switch': ['switch ()', Key('left')],
 
-    #'state include': '#include ',
-    #'state include system': ['#include <>', Key('left')],
-    #'state include local': ['#include ""', Key('left')],
-    #'state type deaf': 'typedef ',
-    #'state type deaf struct': ['typedef struct {\n\n};', Key('up'), '\t'],
-
     #'comment see': '// ',
     #'comment are': '# ',
-
-    #'word queue': 'queue',
-    #'word eye': 'eye',
-    #'word iter': 'iter',
-    #'word no': 'NULL',
 
     'word talon': 'talon',
     'word D-plier': 'dplyr',

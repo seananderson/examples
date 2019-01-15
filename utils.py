@@ -1,4 +1,6 @@
+import string
 import itertools
+import collections
 
 # Useful for identifying app/window information for context selection
 def context_func(app, win):
@@ -24,10 +26,74 @@ numeral_map["and"] = None  # drop me
 numerals = " (" + " | ".join(sorted(numeral_map.keys())) + ")+"
 optional_numerals = " (" + " | ".join(sorted(numeral_map.keys())) + ")*"
 
+mapping = {
+    "semicolon": ";",
+    "new-line": "\n",
+    "new-paragraph": "\n\n",
+    "yamel": "yaml",
+}
 
-def parse_word(word):
-    word = str(word).lstrip("\\").split("\\", 1)[0].lower()
+mappings = collections.defaultdict(dict)
+for k, v in mapping.items():
+    mappings[len(k.split(" "))][k] = v
+
+punctuation = set(".,-!?")
+
+# def parse_word(word):
+#     word = str(word).lstrip("\\").split("\\", 1)[0].lower()
+#     return word
+
+def parse_word(word, force_lowercase=True):
+    word = str(word).lstrip("\\").split("\\", 1)[0]
+    if force_lowercase:
+        word = word.lower()
+    word = mapping.get(word, word)
     return word
+
+def replace_words(words, mapping, count):
+    if len(words) < count:
+        return words
+
+    new_words = []
+    i = 0
+    while i < len(words) - count + 1:
+        phrase = words[i : i + count]
+        key = " ".join(phrase)
+        if key in mapping:
+            new_words.append(mapping[key])
+            i = i + count
+        else:
+            new_words.append(phrase[0])
+            i = i + 1
+
+    new_words.extend(words[i:])
+    return new_words
+
+
+def parse_words(m, natural=False):
+    if isinstance(m, list):
+        words = m
+    elif hasattr(m, "dgndictation"):
+        words = m.dgndictation[0]
+    else:
+        return []
+
+    # split compound words like "pro forma" into two words.
+    words = sum([word.split(" ") for word in words], [])
+    words = list(map(lambda current_word: parse_word(current_word, not natural), words))
+    words = replace_words(words, mappings[2], 2)
+    words = replace_words(words, mappings[3], 3)
+    return words
+
+
+def join_words(words, sep=" "):
+    out = ""
+    for i, word in enumerate(words):
+        if i > 0 and word not in punctuation:
+            out += sep
+        out += str(word)
+    return out
+
 
 def m_to_number(m):
     tmp = [str(s).lower() for s in m._words]
