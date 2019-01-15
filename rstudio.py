@@ -173,6 +173,7 @@ ctx.keymap({
   'geom line':                             'geom_line(',
   'geom point':                            'geom_point(',
   'geom segment':                          'geom_segment(',
+  'geom histogram':                        'geom_histogram(',
   'geom bar':                              'geom_bar(',
   'geom area':                             'geom_area(',
   'geom violin':                           'geom_violin(',
