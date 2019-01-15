@@ -16,6 +16,7 @@ ctx.keymap({
 
     'run git': 'git ',
     'run git remove': 'git rm ',
+    'run git status': 'git status\n',
     'run git add': 'git add ',
     'run git bisect': 'git bisect ',
     'run git branch': 'git branch ',
