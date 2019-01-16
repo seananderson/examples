@@ -61,7 +61,8 @@ def surround(by):
 formatters = {
     'camel':     (True,  lambda i, word, _: word if i == 0 else word.capitalize()),
     'score':     (True,  lambda i, word, _: word if i == 0 else '_'+word.lower()),
-    '(smash|jumble)':     (True,  lambda i, word, _: word.lower()),
+    'smash':     (True,  lambda i, word, _: word.lower()),
+    'jumble':     (True,  lambda i, word, _: word.lower()),
     'jive':      (True,  lambda i, word, _: word.lower() if i == 0 else '-'+word.lower()),
     'titlecase': (False, lambda i, word, _: word.capitalize()),
     'uppercase': (False, lambda i, word, _: word.upper()),
