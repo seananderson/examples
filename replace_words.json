@@ -1,0 +1,52 @@
+{
+
+    "i'm": "I'm",
+    "pitch deque": "pitch deck",
+
+    "ro": "row",
+    "bites": "bytes",
+
+    "question mark": "?",
+    "? mark": "?",
+    "yamel": "yaml",
+    "semicolon": ";",
+    "new-line": "\n",
+    "new-paragraph": "\n\n",
+    "paragraph": "",
+    "new paragraph": "\n\n",
+    "\nparagraph": "\n\n",
+
+    "rose": "rows",
+    "online": "on line",
+    "cashed": "cached",
+    "rupert": "Rooper",
+
+    "then yet": "vignette",
+    "vignette": "vignette",
+
+    "pre-": "pre",
+    "multi-": "multi",
+    "in turn": "intern",
+    "re- factor": "refactor",
+    "re- factoring": "refactoring",
+    "e-mail": "email",
+
+    "thumbs down": ":-1:",
+    "thumbs-down": ":-1:",
+    "thumbs up": ":+1:",
+    "thumbs-up": ":+1:",
+    "okay hand": ":ok_hand:",
+    "thinking face": ":thinking_face:",
+    "thinking base": ":thinking_face:",
+
+    "engrams": "n-grams",
+    "engram": "n-gram",
+    "docker file": "dockerfile",
+    "shall": "shell",
+    "w get": "wget",
+    "backslash": "\\",
+    "jet tub": "github",
+    "git tub": "github",
+    "jet hub": "github",
+    "git hub": "github"
+}

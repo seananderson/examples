@@ -4,14 +4,16 @@ from talon_init import TALON_HOME, TALON_PLUGINS, TALON_USER
 import string
 import time
 
+from .utils import parse_word, surround, text, sentence_text, word, parse_words, spoken_text
+
 # from user.utils import parse_word, parse_words
 
 # cleans up some Dragon output from <dgndictation>
-mapping = {
-    'semicolon': ';',
-    'new-line': '\n',
-    'new-paragraph': '\n\n',
-}
+# mapping = {
+#     'semicolon': ';',
+#     'new-line': '\n',
+#     'new-paragraph': '\n\n',
+# }
 # used for auto-spacing
 punctuation = set('.,-!?')
 
@@ -19,44 +21,44 @@ def CursorText(s):
   left, right = s.split('{.}', 1)
   return [left + right, Key(' '.join(['left'] * len(right)))]
 
-def parse_word(word):
-    word = str(word).lstrip('\\').split('\\', 1)[0]
-    word = mapping.get(word, word)
-    return word
+# def parse_word(word):
+#     word = str(word).lstrip('\\').split('\\', 1)[0]
+#     word = mapping.get(word, word)
+#     return word
 
-def join_words(words, sep=' ', cap_first=False):
-    out = ''
-    for i, word in enumerate(words):
-        if i > 0 and word not in punctuation:
-            out += sep
-        if i == 0 and cap_first:
-            out += word.capitalize()
-        else:
-            out += word
-    return out
+# def join_words(words, sep=' ', cap_first=False):
+#     out = ''
+#     for i, word in enumerate(words):
+#         if i > 0 and word not in punctuation:
+#             out += sep
+#         if i == 0 and cap_first:
+#             out += word.capitalize()
+#         else:
+#             out += word
+#     return out
 
-def parse_words(m):
-   return list(map(parse_word, m.dgndictation[0]._words))
+# def parse_words(m):
+#    return list(map(parse_word, m.dgndictation[0]._words))
 
-def insert(s):
-    Str(s)(None)
+# def insert(s):
+#     Str(s)(None)
 
-def text(m):
-    insert(join_words(parse_words(m)))
+# def text(m):
+#     insert(join_words(parse_words(m)))
 
-def sentence_text(m):
-    insert(join_words(parse_words(m), cap_first=True))
+# def sentence_text(m):
+#     insert(join_words(parse_words(m), cap_first=True))
 
-def word(m):
-    text = join_words(list(map(parse_word, m.dgnwords[0]._words)))
-    insert(text.lower())
+# def word(m):
+#     text = join_words(list(map(parse_word, m.dgnwords[0]._words)))
+#     insert(text.lower())
 
-def surround(by):
-    def func(i, word, last):
-        if i == 0: word = by + word
-        if last: word += by
-        return word
-    return func
+# def surround(by):
+#     def func(i, word, last):
+#         if i == 0: word = by + word
+#         if last: word += by
+#         return word
+#     return func
 
 formatters = {
     'camel':     (True,  lambda i, word, _: word if i == 0 else word.capitalize()),
@@ -310,5 +312,6 @@ ctx.keymap({
     'release option command': lambda m: (
         ctrl.key_press('cmd', cmd=True, alt=True, up=True),
     ),
+
 
 })

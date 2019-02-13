@@ -1,11 +1,14 @@
 import string
 import itertools
 import collections
+import json
+from time import sleep
+from talon import clip, resource
+from talon.voice import Str, Key, press
 
 # Useful for identifying app/window information for context selection
 def context_func(app, win):
     print('---')
-    # print(app)
     print(app.bundle)
     print(win)
     print(win.title)
@@ -26,12 +29,17 @@ numeral_map["and"] = None  # drop me
 numerals = " (" + " | ".join(sorted(numeral_map.keys())) + ")+"
 optional_numerals = " (" + " | ".join(sorted(numeral_map.keys())) + ")*"
 
-mapping = {
-    "semicolon": ";",
-    "new-line": "\n",
-    "new-paragraph": "\n\n",
-    "yamel": "yaml",
-}
+# mapping = {
+#     "semicolon": ";",
+#     "new-line": "\n",
+#     "new-paragraph": "\n\n",
+#     "yamel": "yaml",
+# }
+
+# mapping = json.load(open(os.path.join(os.path.dirname(__file__), "replace_words.json")))
+
+with resource.open('replace_words.json') as f:
+    mapping = json.load(f)
 
 mappings = collections.defaultdict(dict)
 for k, v in mapping.items():
@@ -43,11 +51,20 @@ punctuation = set(".,-!?")
 #     word = str(word).lstrip("\\").split("\\", 1)[0].lower()
 #     return word
 
+# token_replace =  {   # <-- add this block in std.py
+#     'i\\pronoun': 'I',
+#     'i\'m': 'I\'m',
+#     'i\'ve': 'I\'ve',
+#     # 'i\'d': 'I\'d', # etc
+# }
+
 def parse_word(word, force_lowercase=True):
     word = str(word).lstrip("\\").split("\\", 1)[0]
+
     if force_lowercase:
         word = word.lower()
     word = mapping.get(word, word)
+
     return word
 
 def replace_words(words, mapping, count):
@@ -93,6 +110,38 @@ def join_words(words, sep=" "):
             out += sep
         out += str(word)
     return out
+
+def insert(s):
+    Str(s)(None)
+
+def text(m):
+    insert(join_words(parse_words(m)).lower())
+
+def spoken_text(m):
+    insert(join_words(parse_words(m, True)))
+
+
+def sentence_text(m):
+    raw_sentence = join_words(parse_words(m, True))
+    sentence = raw_sentence[0].upper() + raw_sentence[1:]
+    insert(sentence)
+
+def word(m):
+    try:
+        text = join_words(list(map(parse_word, m.dgnwords[0]._words)))
+        insert(text.lower())
+    except AttributeError:
+        pass
+
+def surround(by):
+    def func(i, word, last):
+        if i == 0:
+            word = by + word
+        if last:
+            word += by
+        return word
+
+    return func
 
 
 def m_to_number(m):
