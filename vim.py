@@ -1,7 +1,7 @@
 from talon.voice import Word, Context, Key, Rep, Str, press
 
-ctx = Context('vim', bundle='com.googlecode.iterm2',
-        func=lambda app, win: 'vim' in win.title)
+apps = ("com.googlecode.iterm2", "org.vim.MacVim")
+ctx = Context("vim", func=lambda app, win: any(t in app.bundle for t in apps))
 
 def search_forward(m):
     press('/')
