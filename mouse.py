@@ -99,7 +99,7 @@ def control_zoom_mouse(m):
 
     eye_zoom_mouse.zoom_mouse.toggle()
     if eye_mouse.control_mouse.enabled:
-        eye_mouse.control_mouse.toggle() 
+        eye_mouse.control_mouse.toggle()
 
 
 
@@ -127,11 +127,11 @@ ctx.keymap({
     "click right": delayed_right_click,
     "click double": delayed_dubclick,
     "click triple": delayed_tripclick,
-    "click drag": mouse_drag,
-    "click release": mouse_release,
-    "wheel down": mouse_scroll(30),
-    "wheel up": mouse_scroll(-30),
-    # "continuous": startScrolling,
+    "drag": mouse_drag,
+    "release": mouse_release,
+    "wheel down": mouse_scroll(200),
+    "wheel up": mouse_scroll(-200),
+    # "wheel continuous": startScrolling,
     "wheel stop": stopScrolling,
     "click command": adv_click(0, "cmd"),
     "click control": adv_click(0, "ctrl"),
