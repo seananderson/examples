@@ -100,9 +100,9 @@ ctx.keymap({
     'snap bottom right':               grid(2, 2, 2, 2),
     'snap top    left':                grid(1, 1, 2, 2),
 
-    'snap (one)  third  left':         grid(1, 1, 3, 1),
-    'snap (one)  third  middle':       grid(2, 1, 3, 1),
-    'snap (one)  third  right':        grid(3, 1, 3, 1),
+    'snap [one]  third  left':         grid(1, 1, 3, 1),
+    'snap [one]  third  middle':       grid(2, 1, 3, 1),
+    'snap [one]  third  right':        grid(3, 1, 3, 1),
     'snap two    thirds left':         grid(1, 1, 3, 1, 2),
     'snap two    thirds right':        grid(2, 1, 3, 1, 2),
 

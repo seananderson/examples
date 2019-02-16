@@ -42,7 +42,7 @@ ctx.keymap({
   'line up':                               Key('alt-up'),
   'line down':                             Key('alt-down'),
   'duplicate line up':                     Key('cmd-alt-up'),
-  'duplicate line (down)':                 Key('cmd-alt-down'),
+  'duplicate line [down]':                 Key('cmd-alt-down'),
 
   'select to paren':                       Key('ctrl-shift-e'),
   'select to matching paren':              Key('ctrl-shift-alt-e'),
