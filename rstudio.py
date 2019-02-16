@@ -11,7 +11,6 @@ ctx.keymap({
   # Running code
 
   'run that':                              Key('cmd-enter'),
-  'run line and stay':                     Key('alt-enter'),
   'run previous':                          Key('cmd-shift-p'),
   'run document':                          Key('cmd-alt-r'),
   'run from top':                          Key('cmd-alt-b'),
@@ -22,7 +21,6 @@ ctx.keymap({
   'run chunk':                             Key('cmd-alt-c'),
   'run next chunk':                        Key('cmd-alt-n'),
   'run all':                               Key('cmd-shift-s'),
-  'run and echo all':                      Key('cmd-shift-enter'),
   'run knitter':                           Key('cmd-shift-k'),
   'run profiler':                          Key('cmd-shift-alt-p'),
 
@@ -32,7 +30,6 @@ ctx.keymap({
   'jump forward':                          Key('cmd-f10'),
 
   'close all tabs':                        Key('cmd-shift-w'),
-  'insert knitter chunk':                  Key('cmd-alt-i'),
 
   'indent lines':                          Key('cmd-i'),
   'comment toggle':                        Key('cmd-shift-c'),
@@ -61,6 +58,7 @@ ctx.keymap({
 
   'assign that':                           Key('alt--'),
   'pipe that':                             Key('cmd-shift-m'),
+  'insert knitter chunk':                  Key('cmd-alt-i'),
 
   # Folding
 
@@ -68,7 +66,6 @@ ctx.keymap({
   'unfold that':                           Key('cmd-shift-alt-l'),
   'fold all':                              Key('cmd-alt-o'),
   'unfold all':                            Key('cmd-shift-alt-o'),
-
 
   # Find and replace
 
@@ -133,6 +130,9 @@ ctx.keymap({
   'run git commit':                        Key('ctrl-alt-m'),
 
   # Other shortcuts that could be enabled
+  
+  # 'run line and stay':                   Key('alt-enter'),
+  # 'run and echo all':                    Key('cmd-shift-enter'),
 
   # 'extract (function|funk)':             Key('cmd-alt-x'),
   # 'extract variable':                    Key('cmd-alt-v'),
