@@ -4,24 +4,16 @@ ctx = Context('RStudio', bundle='org.rstudio.RStudio')
 
 ctx.keymap({
 
-  # Console
+  # The shortcut to rule them all
 
-  # 'Clear console':                       Key('ctrl-L'),
-  # 'Popup history':                       Key('cmd-Up'),
-  # 'Change working directory':            Key('ctrl-shift-H'),
+  'show keyboard shortcuts':               Key('alt-shift-k'),
 
-  # 'New document':                        Key('cmd-shift-N'),
-  # 'New document (Chrome only)':          Key('cmd-shift-Alt-N'),
-  # 'Insert code section':                 Key('cmd-shift-R'),
-
-  'close all tabs':                        Key('cmd-shift-w'),
-  'run knitter':                           Key('cmd-shift-k'),
-  'insert knitter chunk':                  Key('cmd-alt-i'),
+  # Running code
 
   'run that':                              Key('cmd-enter'),
   'run line and stay':                     Key('alt-enter'),
-  'run previous':                          Key('cmd-shift-P'),
-  'run document':                          Key('cmd-alt-R'),
+  'run previous':                          Key('cmd-shift-p'),
+  'run document':                          Key('cmd-alt-r'),
   'run from top':                          Key('cmd-alt-b'),
   'run to end':                            Key('cmd-alt-e'),
   'run (function|funk)':                   Key('cmd-alt-f'),
@@ -29,42 +21,31 @@ ctx.keymap({
   'run previous chunks':                   Key('cmd-alt-p'),
   'run chunk':                             Key('cmd-alt-c'),
   'run next chunk':                        Key('cmd-alt-n'),
-  'run all':                               Key('cmd-shift-S'),
+  'run all':                               Key('cmd-shift-s'),
   'run and echo all':                      Key('cmd-shift-enter'),
+  'run knitter':                           Key('cmd-shift-k'),
+  'run profiler':                          Key('cmd-shift-alt-p'),
 
-  # 'Fold Selected':                       Key('cmd-alt-L'),
-  # 'Unfold Selected':                     Key('cmd-shift-alt-L'),
-  # 'Fold All':                            Key('cmd-alt-O'),
-  # 'Unfold All':                          Key('cmd-shift-alt-O'),
+  # Moving around and formatting
 
-  'go to omni':                            Key('ctrl-.'),
-  'go to line':                            Key('cmd-shift-alt-g'),
-  'go to section':                         Key('cmd-shift-alt-j'),
-  'go to tab':                             Key('ctrl-shift-.'),
-  'go to previous tab':                    Key('ctrl-f11'),
-  'go to next tab':                        Key('ctrl-f12'),
-  'go to first tab':                       Key('ctrl-shift-f11'),
-  'go to last tab':                        Key('ctrl-shift-f12'),
+  'jump back':                             Key('cmd-f9'),
+  'jump forward':                          Key('cmd-f10'),
 
-  'jump back':                             Key('cmd-F9'),
-  'jump forward':                          Key('cmd-F10'),
+  'close all tabs':                        Key('cmd-shift-w'),
+  'insert knitter chunk':                  Key('cmd-alt-i'),
 
-  'extract function from selection':       Key('cmd-alt-X'),
-  'extract variable from selection':       Key('cmd-alt-V'),
+  'indent lines':                          Key('cmd-i'),
+  'comment toggle':                        Key('cmd-shift-c'),
+  'comment reformat':                      Key('cmd-shift-/'),
+  'reformat R code':                       Key('cmd-shift-a'),
 
-  'indent lines':                          Key('cmd-I'),
-  'toggle comment':                        Key('cmd-shift-C'),
-  'reformat comment':                      Key('cmd-shift-/'),
-  'reformat are code':                     Key('cmd-shift-A'),
-  'show diagnostics':                      Key('cmd-shift-Alt-P'),
-
-  'move up':                               Key('alt-up'),
-  'move down':                             Key('alt-down'),
+  'line up':                               Key('alt-up'),
+  'line down':                             Key('alt-down'),
   'duplicate line up':                     Key('cmd-alt-up'),
   'duplicate line (down)':                 Key('cmd-alt-down'),
 
-  'select to paren':                       Key('ctrl-shift-E'),
-  'select to matching paren':              Key('ctrl-shift-Alt-E'),
+  'select to paren':                       Key('ctrl-shift-e'),
+  'select to matching paren':              Key('ctrl-shift-alt-e'),
   'jump to matching':                      Key('ctrl-p'),
   'expand selection':                      Key('shift-alt-cmd-up'),
   'reduce selection':                      Key('shift-alt-cmd-down'),
@@ -74,32 +55,32 @@ ctx.keymap({
   'move active cursor up':                 Key('ctrl-alt-shift-up'),
   'move active cursor down':               Key('ctrl-alt-shift-down'),
 
+  'line delete':                           Key('cmd-d'),
+  'word delete left':                      Key('alt-backspace'),
+  'word delete right':                     Key('alt-delete'),
+
+  'assign that':                           Key('alt--'),
+  'pipe that':                             Key('cmd-shift-m'),
+
+  # Folding
+
+  'fold that':                             Key('cmd-alt-l'),
+  'unfold that':                           Key('cmd-shift-alt-l'),
+  'fold all':                              Key('cmd-alt-o'),
+  'unfold all':                            Key('cmd-shift-alt-o'),
+
+
+  # Find and replace
+
   'find and replace':                      Key('cmd-f'),
   'find next':                             Key('cmd-g'),
-  'find previous':                         Key('cmd-shift-G'),
+  'find previous':                         Key('cmd-shift-g'),
   'find with selection':                   Key('cmd-e'),
-  'run replace':                           Key('cmd-shift-J'),
-  'find in files':                         Key('cmd-shift-F'),
-
+  'find in files':                         Key('cmd-shift-f'),
+  'run replace':                           Key('cmd-shift-j'),
   'run spell check':                       Key('f7'),
 
-  # Editing (Console and Source)
-
-  'delete line':                           Key('cmd-d'),
-  'delete word left':                      Key('alt-backspace'),
-  'delete word right':                     Key('alt-delete'),
-  'assign that':                           Key('alt--'),
-  'pipe that':                             Key('cmd-shift-M'),
-  'help that':                             Key('f1'),
-  'define that':                           Key('f2'),
-
-  # 'Delete to Line End':                  Key('ctrl-K'),
-  # 'Delete to Line Start':                Key('alt-backspace'),
-  # 'Yank line up to cursor':              Key('ctrl-U'),
-  # 'Yank line after cursor':              Key('ctrl-K'),
-  # 'Insert currently yanked text':        Key('ctrl-Y'),
-
-  # Views
+  # Navigation and panels
 
   'go to source':                          Key('ctrl-1'),
   'go to console':                         Key('ctrl-2'),
@@ -111,79 +92,65 @@ ctx.keymap({
   'go to environment':                     Key('ctrl-8'),
   'go to git':                             Key('ctrl-9'),
   'go to build':                           Key('ctrl-0'),
-  'go to terminal':                        Key('alt-shift-T'),
-  # 'sync editor & PDF preview':           Key('cmd-F8'),
-  'show keyboard shortcuts':               Key('alt-shift-K'),
+  'go to terminal':                        Key('alt-shift-t'),
 
-  # Build
+  'go to omni':                            Key('ctrl-.'),
+  'go to line':                            Key('cmd-shift-alt-g'),
+  'go to section':                         Key('cmd-shift-alt-j'),
+  'go to tab':                             Key('ctrl-shift-.'),
+  'go to previous tab':                    Key('ctrl-f11'),
+  'go to next tab':                        Key('ctrl-f12'),
+  'go to first tab':                       Key('ctrl-shift-f11'),
+  'go to last tab':                        Key('ctrl-shift-f12'),
 
-  'dev tools Build':                       Key('cmd-shift-B'),
-  'dev tools Load All':                    Key('cmd-shift-L'),
-  'dev tools Test':                        Key('cmd-shift-T'),
-  'dev tools Check':                       Key('cmd-shift-E'),
-  'dev tools Document':                    Key('cmd-shift-D'),
-
-  # Debug
-
-  'toggle breakpoint':                     Key('shift-f9'),
-  'debug next':                            Key('f10'),
-  'debug step into function':              Key('shift-f4'),
-  'debug finish function':                 Key('shift-f6'),
-  'debug continue':                        Key('shift-f5'),
-  'debug stop':                            Key('shift-f8'),
-
-  # Plots
+  'help that':                             Key('f1'),
+  'define that':                           Key('f2'),
 
   'previous plot':                         Key('cmd-alt-f11'),
   'next plot':                             Key('cmd-alt-f12'),
+
+  # devtools, package development, and session management
+
+  'restart R session':                     Key('cmd-shift-f10'),
+  'dev tools build':                       Key('cmd-shift-b'),
+  'dev tools load all':                    Key('cmd-shift-l'),
+  'dev tools test':                        Key('cmd-shift-t'),
+  'dev tools check':                       Key('cmd-shift-e'),
+  'dev tools document':                    Key('cmd-shift-d'),
+
+  # Debugging
+
+  'toggle breakpoint':                     Key('shift-f9'),
+  'debug next':                            Key('f10'),
+  'debug step into (function|funk)':       Key('shift-f4'),
+  'debug finish (function|funk)':          Key('shift-f6'),
+  'debug continue':                        Key('shift-f5'),
+  'debug stop':                            Key('shift-f8'),
 
   # Git/SVN
 
   'run git diff':                          Key('ctrl-alt-d'),
   'run git commit':                        Key('ctrl-alt-m'),
-  # 'scroll diff view':                    Key('ctrl-Up/Down'),
-  'run git stage':                         Key('space'), # toggles
-  'stage/unstage and next (Git)':          Key('enter'),
 
-  # Session
+  # Other shortcuts that could be enabled
 
-  'restart R session':                     Key('cmd-shift-f10'),
+  # 'extract (function|funk)':             Key('cmd-alt-x'),
+  # 'extract variable':                    Key('cmd-alt-v'),
 
-  # Terminal
+  # 'New Terminal':                        Key('shift-alt-t'),
+  # 'Rename Current Terminal':             Key('shift-alt-r'),
+  # 'Clear Current Terminal':              Key('ctrl-shift-l'),
+  # 'Previous Terminal':                   Key('ctrl-alt-f11'),
+  # 'Next Terminal':                       Key('ctrl-alt-f12'),
 
-  # 'New Terminal':                        Key('shift-alt-T'),
-  # 'Rename Current Terminal':             Key('shift-alt-R'),
-  # 'Clear Current Terminal':              Key('ctrl-shift-L'),
-  # 'Move Focus to Terminal':              Key('ctrl-shift-T'),
-  # 'Previous Terminal':                   Key('ctrl-alt-F11'),
-  # 'Next Terminal':                       Key('ctrl-alt-F12'),
+  # 'Clear console':                       Key('ctrl-l'),
+  # 'Popup history':                       Key('cmd-up'),
+  # 'Change working directory':            Key('ctrl-shift-h'),
+  # 'New document':                        Key('cmd-shift-n'),
+  # 'New document (Chrome only)':          Key('cmd-shift-alt-n'),
+  # 'Insert code section':                 Key('cmd-shift-r'),
 
-  'd-plier select':                        'select(',
-  'd-plier mutate':                        'mutate(',
-  'd-plier summarize':                     'summarize(',
-  'd-plier filter':                        'filter(',
-  'd-plier rename':                        'rename(',
-  'd-plier group by':                      'group_by(',
-  'd-plier inner join':                    'inner_join(',
-  'd-plier left join':                     'left_join(',
-  'd-plier bind rows':                     'bind_rows(',
+  # 'scroll diff view':                    Key('ctrl-up/down'),
+  # 'sync editor & PDF preview':           Key('cmd-f8'),
 
-  'word G G plot':                         'ggplot',
-  'geom point':                            'geom_point(',
-  'geom line':                             'geom_line(',
-  'geom point':                            'geom_point(',
-  'geom segment':                          'geom_segment(',
-  'geom histogram':                        'geom_histogram(',
-  'geom bar':                              'geom_bar(',
-  'geom area':                             'geom_area(',
-  'geom violin':                           'geom_violin(',
-  'geom boxplot':                          'geom_boxplot(',
-  'geom pointrange':                       'geom_pointrange(',
-  'geom polygon':                          'geom_polygon(',
-  'geom (ab|A B) line':                    'geom_abline(',
-  'geom horizontal line':                  'geom_hbline(',
-  'geom vertical line':                    'geom_vbline(',
-  'G G aesthetic':                         'aes(',
-  'G G ex label':                          'xlab(',
-  'G G why label':                         'ylab(',
 })

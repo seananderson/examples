@@ -148,7 +148,7 @@ ctx.keymap({
     'caret': '^',
     'at symbol': '@',
     'ampersand': '&',
-    'vertical bar': '|',
+    'bar': '|',
 
     'double quote': '"',
     'quote': "'",
@@ -176,22 +176,16 @@ ctx.keymap({
 
     #'comment see': '// ',
     #'comment are': '# ',
-
-    'word talon': 'talon',
-    'word D-plier': 'dplyr',
-    'word G G plot 2': 'ggplot2',
-    'word reshape 2': 'reshape2',
-    'word G L M M': 'GLMM',
-    'word G L M': 'GLM',
-    'word area': 'area',
-    'word axis': 'axis',
-    'word paste': 'paste',
     'word to do': 'TODO: ',
     'word ref': 'REF',
     # 'word down': 'down',
     # 'word up': 'up',
     # 'word left': 'left',
     # 'word right': 'right',
+
+    'word talon': 'talon',
+    'word G L M M': 'GLMM',
+    'word G L M': 'GLM',
 
     #'dickt in it': ['{}', Key('left')],
     #FIXME redefine# 'list in it': ['[]', Key('left')],
