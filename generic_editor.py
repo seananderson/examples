@@ -2,9 +2,9 @@ import time
 
 import talon.clip as clip
 from talon.voice import Key, press, Str, Context
-from ..utils import parse_words, join_words
+from .utils import parse_words, join_words
 
-ctx = Context("generic_editor")  # , bundle='com.microsoft.VSCode')
+ctx = Context("generic_editor")
 
 numeral_map = dict((str(n), n) for n in range(0, 20))
 for n in [20, 30, 40, 50, 60, 70, 80, 90]:
@@ -268,13 +268,13 @@ ctx.keymap({
     # NB these do not work properly if there is a selection
     # "snipple": Key("shift-cmd-left delete"),
     # "snipper": Key("shift-cmd-right delete"),
-    # "shackle": Key("cmd-right shift-cmd-left"),
+    # "shackle": Key("cmd-right shift-cmd-left")
     "(select previous) [<dgndictation>++]": select_text_to_left_of_cursor,
     "(select next) [<dgndictation>++]": select_text_to_right_of_cursor,
-    "delete line": [Key("home"), Key("shift-end"), Key("delete"), Key("delete")],
-    "delete to end": [Key("shift-end"), Key("delete")],
-    "delete to start": [Key("shift-home"), Key("delete")],
-    "clear line": [Key("home"), Key("shift-end"), Key("delete")],
+    # "delete line": [Key("home"), Key("shift-end"), Key("delete"), Key("delete")],
+    # "delete to end": [Key("shift-end"), Key("delete")],
+    # "delete to start": [Key("shift-home"), Key("delete")],
+    # "clear line": [Key("home"), Key("shift-end"), Key("delete")],
 
     # "shift home": Key("shift-home"),
     # "wordneck" + optional_numerals: word_neck,
