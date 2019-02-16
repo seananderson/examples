@@ -17,15 +17,15 @@ path_log = os.path.join(TALON_HOME, 'phrase_log.csv')
 WEBVIEW = True
 NOTIFY = False
 
-# if WEBVIEW: 
+# if WEBVIEW:
 #     webview = webview.Webview()
 #     webview.move(0, ui.main_screen().height)
 #     webview.body = '<i>[waiting&nbsp;for&nbsp;phrase]</i>'
 #     webview.show()
-    
+
 def parse_phrase(phrase):
     return ' '.join(word.split('\\')[0] for word in phrase)
-    
+
 def on_phrase(j):
     phrase = parse_phrase(j.get('phrase', []))
     cmd = j['cmd']
@@ -43,8 +43,8 @@ def on_phrase(j):
     #        webview.render("<i>{{ phrase }}</i>", phrase=body)
     #    else:
     #        webview.render("{{ phrase }}", phrase=body)
-    #        
+    #
     if NOTIFY and cmd == 'p.end' and phrase:
         app.notify(body=phrase)
-        
+
 engine.register('phrase', on_phrase)

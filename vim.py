@@ -82,7 +82,7 @@ ctx.keymap({
         "edit args":                ":args *.",
         "write file":               [Key("escape"), ':update', Key("enter")],
         "write and exit":           "esc :wq!",
-        
+
         "buff quit":                "esc :q\n",
         'buff delete':              "esc :bd\n",
         'buff next':                "esc :bn\n",

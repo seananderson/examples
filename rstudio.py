@@ -130,7 +130,7 @@ ctx.keymap({
   'run git commit':                        Key('ctrl-alt-m'),
 
   # Other shortcuts that could be enabled
-  
+
   # 'run line and stay':                   Key('alt-enter'),
   # 'run and echo all':                    Key('cmd-shift-enter'),
 
