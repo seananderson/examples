@@ -116,9 +116,9 @@ ctx = Context('input')
 ctx.keymap({
     'say <dgndictation> [over]': text,
     'cap <dgndictation> [over]': sentence_text,
-    'comma <dgndictation> [over]': [', ', text],
+    'calmer <dgndictation> [over]': [', ', text],
     'period <dgndictation> [over]': ['. ', sentence_text],
-    # 'more <dgndictation> [over]': [' ', text],
+    'more <dgndictation> [over]': [' ', text],
     'word <dgnwords>': word,
     '(%s)+ [<dgndictation>]' % (' | '.join(formatters)): FormatText,
 
@@ -242,7 +242,7 @@ ctx.keymap({
     'app next': Key('cmd-tab'),
     'app last': Key('cmd-shift-tab'),
     'tab next': Key('ctrl-tab'),
-    'tab preev': Key('ctrl-shift-tab'),
+    'tab (preev|previous)': Key('ctrl-shift-tab'),
     'tab new': Key('cmd-t'),
 
     'scroll down': [Key('down')] * 30,
