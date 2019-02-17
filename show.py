@@ -209,7 +209,7 @@ def show_commands(context):
                 mapping.append((trigger, format_action(action),))
 
         keymap = {
-                '(0 | quit | exit | escape)': lambda x: close_webview(),
+                '(quit | exit)': lambda x: close_webview(),
                 'up': Key('pgup'),
                 'down': Key('pgdown'),
         }
