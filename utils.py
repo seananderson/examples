@@ -109,13 +109,16 @@ def join_words(words, sep=" "):
         if i > 0 and word not in punctuation:
             out += sep
         out += str(word)
+    out = out.lower()
+    out = out.replace(' i ', ' I ')
+    # print(out)
     return out
 
 def insert(s):
     Str(s)(None)
 
 def text(m):
-    insert(join_words(parse_words(m)).lower())
+    insert(join_words(parse_words(m)))
 
 def spoken_text(m):
     insert(join_words(parse_words(m, True)))
