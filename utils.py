@@ -5,6 +5,7 @@ import json
 from time import sleep
 from talon import clip, resource
 from talon.voice import Str, Key, press
+import re
 
 # Useful for identifying app/window information for context selection
 def context_func(app, win):
@@ -110,7 +111,10 @@ def join_words(words, sep=" "):
             out += sep
         out += str(word)
     out = out.lower()
-    out = out.replace(' i ', ' I ')
+    out = re.sub(u"(^|\W)i(\W|$)",    u"\g<1>I\g<2>", out)
+    out = re.sub(u"(^|\W)i've(\W|$)", u"\g<1>I've\g<2>", out)
+    out = re.sub(u"(^|\W)i'm(\W|$)",  u"\g<1>I'm\g<2>", out)
+    out = re.sub(u"(^|\W)i'd(\W|$)",  u"\g<1>I'd\g<2>", out)
     # print(out)
     return out
 
