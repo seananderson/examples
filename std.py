@@ -153,8 +153,9 @@ ctx.keymap({
     'ampersand': '&',
     'bar': '|',
 
-    'double quote': '"',
-    'quote': "'",
+    'quote [double]': '"',
+    'apostrophe': "'",
+    'quote single': "'",
     'calm': ',',
     'calmer': ', ',
     '(dot dot dot | dotdotdot)': '...',
