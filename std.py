@@ -114,11 +114,11 @@ def copy_bundle(m):
 ctx = Context('input')
 
 ctx.keymap({
-    'say <dgndictation> [over]': text,
-    'cap <dgndictation> [over]': sentence_text,
-    'sentence <dgndictation> [over]': sentence_text,
-    # 'say <dgndictation> [over]': [text, ' '],
-    # 'cap <dgndictation> [over]': [sentence_text, ' '],
+    # 'say <dgndictation> [over]': text,
+    # 'cap <dgndictation> [over]': sentence_text,
+    # 'sentence <dgndictation> [over]': sentence_text,
+    'say <dgndictation> [over]': [text, ' '],
+    'cap <dgndictation> [over]': [sentence_text, ' '],
     'calmer <dgndictation> [over]': [', ', text],
     'period <dgndictation> [over]': ['. ', sentence_text],
     'more <dgndictation> [over]': [' ', text],
