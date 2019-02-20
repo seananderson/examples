@@ -115,6 +115,8 @@ def join_words(words, sep=" "):
     out = re.sub(u"(^|\W)i've(\W|$)", u"\g<1>I've\g<2>", out)
     out = re.sub(u"(^|\W)i'm(\W|$)",  u"\g<1>I'm\g<2>", out)
     out = re.sub(u"(^|\W)i'd(\W|$)",  u"\g<1>I'd\g<2>", out)
+    out = re.sub(u"(^|\W)ok(\W|$)",  u"\g<1>OK\g<2>", out)
+    out = re.sub(u"(^|\W)jstor(\W|$)",  u"\g<1>JSTOR\g<2>", out)
     # print(out)
     return out
 
