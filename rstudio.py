@@ -85,6 +85,10 @@ ctx.keymap(
         "go to next tab":                  Key("ctrl-f12"),
         "go to first tab":                 Key("ctrl-shift-f11"),
         "go to last tab":                  Key("ctrl-shift-f12"),
+
+        "zoom source":                     Key("ctrl-shift-1"),
+        "(zoom|show) all panes":           Key("ctrl-shift-0"),
+
         "help that":                       Key("f1"),
         "define that":                     Key("f2"),
         "previous plot":                   Key("cmd-alt-f11"),
