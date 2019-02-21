@@ -1,9 +1,22 @@
 from talon.voice import Context, Str, press
 import string
+from .utils import insert
 
-alpha_alt = 'air bat char drum each fine gust harp sit jury crunch look made near odd pit quench red sun trap urge vest whale plex yank zip'.split()
-
+# alpha_alt = 'air bat cap drum each fine gust harp sit jury crunch look made near odd pit quench red sun trap urge vest whale plex yank zip'.split()
 # alpha_alt = 'arch bat char drum echo fox golf hotel ice juliet kilo lug mike nerb ork pooch queen romeo souk tango urge victor whiskey plex yank zip'.split()
+alpha_alt = 'arch bat char drum echo fox golf hotel ice jury kilo lug mike nerb ork pooch queen romeo souk tango urge victor whiskey plex yank zip'.split()
+alpha_alt2 = [
+    ('air',    'a'), 
+    ('gust',   'g'), 
+    ('harp',   'h'), 
+    ('jury',   'j'), 
+    ('crunch', 'k'), 
+    ('near',   'n'), 
+    ('odd',    'o'), 
+    ('red',    'r'), 
+    ('trap',   't'), 
+    ('vest',   'v')]
+
 f_keys = {f'F {i}': f'f{i}' for i in range(1, 13)}
 # arrows are separated because 'up' has a high false positive rate
 arrows = ['left', 'right', 'up', 'down']
@@ -29,14 +42,16 @@ symbols = {
     'equals': '=',
 }
 modifiers = {
-    'command': 'cmd', 'cod': 'cmd',
+    'command': 'cmd',
     'control': 'ctrl',
     'shift': 'shift',
     'alt': 'alt',
     'option': 'alt',
 }
 
-alphabet = dict(zip(alpha_alt, string.ascii_lowercase))
+alphabet_zip = zip(alpha_alt, string.ascii_lowercase)
+alphabet = dict(alphabet_zip)
+alphabet.update(dict(alpha_alt2))
 digits = {str(i): str(i) for i in range(10)}
 simple_keys = {k: k for k in simple_keys}
 arrows = {k: k for k in arrows}
@@ -51,9 +66,6 @@ keymap = keys.copy()
 keymap.update(arrows)
 keymap.update(alphabet)
 keymap.update(digits)
-
-def insert(s):
-    Str(s)(None)
 
 def get_modifiers(m):
     try:
