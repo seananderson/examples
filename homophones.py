@@ -3,7 +3,7 @@ from talon.engine import engine
 from talon.voice import Word, Key, Context, Str, press
 from talon.webview import Webview
 
-from .utils import parse_word
+from .utils import parse_word, insert
 import os
 
 ########################################################################
@@ -127,7 +127,7 @@ def make_selection(m, is_selection, transform=lambda x: x):
         clip.set(w)
         press("cmd-v", wait=0)
     else:
-        Str(w)(None)
+        insert(w)
 
 
 def get_selection():

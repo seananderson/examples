@@ -104,7 +104,7 @@ def FormatText(m):
     sep = ' '
     if not spaces:
         sep = ''
-    Str(sep.join(words))(None)
+    insert(sep.join(words))
 
 def copy_bundle(m):
     bundle = ui.active_app().bundle
