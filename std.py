@@ -4,76 +4,29 @@ from talon_init import TALON_HOME, TALON_PLUGINS, TALON_USER
 import string
 import time
 
-from .utils import parse_word, surround, text, sentence_text, word, parse_words, spoken_text
+from .utils import parse_word, surround, text, sentence_text, word, parse_words, spoken_text, select_last_insert, insert
 
-# from user.utils import parse_word, parse_words
-
-# cleans up some Dragon output from <dgndictation>
-# mapping = {
-#     'semicolon': ';',
-#     'new-line': '\n',
-#     'new-paragraph': '\n\n',
-# }
-# used for auto-spacing
 punctuation = set('.,-!?')
 
 def CursorText(s):
   left, right = s.split('{.}', 1)
   return [left + right, Key(' '.join(['left'] * len(right)))]
 
-# def parse_word(word):
-#     word = str(word).lstrip('\\').split('\\', 1)[0]
-#     word = mapping.get(word, word)
-#     return word
-
-# def join_words(words, sep=' ', cap_first=False):
-#     out = ''
-#     for i, word in enumerate(words):
-#         if i > 0 and word not in punctuation:
-#             out += sep
-#         if i == 0 and cap_first:
-#             out += word.capitalize()
-#         else:
-#             out += word
-#     return out
-
-# def parse_words(m):
-#    return list(map(parse_word, m.dgndictation[0]._words))
-
-# def insert(s):
-#     Str(s)(None)
-
-# def text(m):
-#     insert(join_words(parse_words(m)))
-
-# def sentence_text(m):
-#     insert(join_words(parse_words(m), cap_first=True))
-
-# def word(m):
-#     text = join_words(list(map(parse_word, m.dgnwords[0]._words)))
-#     insert(text.lower())
-
-# def surround(by):
-#     def func(i, word, last):
-#         if i == 0: word = by + word
-#         if last: word += by
-#         return word
-#     return func
-
 formatters = {
     'camel':     (True,  lambda i, word, _: word if i == 0 else word.capitalize()),
     'score':     (True,  lambda i, word, _: word if i == 0 else '_'+word.lower()),
     'smash':     (True,  lambda i, word, _: word.lower()),
-    'jumble':     (True,  lambda i, word, _: word.lower()),
+    'jumble':    (True,  lambda i, word, _: word.lower()),
     'jive':      (True,  lambda i, word, _: word.lower() if i == 0 else '-'+word.lower()),
     'titlecase': (False, lambda i, word, _: word.capitalize()),
     'uppercase': (False, lambda i, word, _: word.upper()),
-    'double-string':    (False, surround('"')),
+    'double-string': (False, surround('"')),
     'single-string': (False, surround("'")),
-    'padded':    (False, surround(" ")),
+    'padded':    (False,     surround(" ")),
     'dotify':    (True,  lambda i, word, _: word.lower() if i == 0 else '.'+word.lower()),
     'thrack':    (True,  lambda i, word, _: word.lower()[0:3]), # first 3 letters of word
     'quattro':   (True,  lambda i, word, _: word.lower()[0:4]), # first 4 ...
+    'acronym':   (True,  lambda i, word, _: word[0:1].upper()),
 }
 
 def FormatText(m):
@@ -114,19 +67,25 @@ def copy_bundle(m):
 ctx = Context('input')
 
 ctx.keymap({
-    # 'say <dgndictation> [over]': text,
-    # 'cap <dgndictation> [over]': sentence_text,
-    # 'sentence <dgndictation> [over]': sentence_text,
-    'say <dgndictation> [over]': [text, ' '],
-    'cap <dgndictation> [over]': [sentence_text, ' '],
+    'say <dgndictation> [over]': text,
+    'cap <dgndictation> [over]': sentence_text,
+    # 'say <dgndictation> [over]': [text, ' '],
+    # 'cap <dgndictation> [over]': [sentence_text, ' '],
     'calmer <dgndictation> [over]': [', ', text],
     'period <dgndictation> [over]': ['. ', sentence_text],
-    'more <dgndictation> [over]': [' ', text],
+    # 'and say <dgndictation> [over]': [' ', text],
+    # 'and sentence <dgndictation> [over]': [' ', sentence_text],
     'word <dgnwords>': word,
     '(%s)+ [<dgndictation>]' % (' | '.join(formatters)): FormatText,
 
+    'select last': select_last_insert,
+
+    "cut that": Key("cmd-x"),
+    "copy that": Key("cmd-c"),
+    "paste that": Key("cmd-v"),
+
     'kill': Key('delete'),
-    '(chuck|delete)': Key('backspace'),
+    'chuck': Key('backspace'),
 
     'slap': Key('enter'),
     'slap that': [Key('cmd-right'), lambda m: time.sleep(0.05), Key('enter')],
@@ -134,7 +93,7 @@ ctx.keymap({
     'quest mark': '?',
     'tilde': '~',
     'backtick': '`',
-    '(bang | exclamation [mark])': '!',
+    '(bang | exclamation mark)': '!',
     'dollar': '$',
     'underscore': '_',
     'colon': ':',
@@ -161,16 +120,7 @@ ctx.keymap({
     '(dot dot dot | dotdotdot)': '...',
     '(dot dot | dotdot)': '..',
 
-    #'extension python': '.py',
-    #'extension R': '.R',
-    #'extension see plus plus': '.cpp',
-    #'extension Stan': '.stan',
-    #'extension markdown': '.md',
-    #'extension R markdown': '.Rmd',
-
     'args': ['()', Key('left')],
-    # 'index': ['[]', Key('left')],
-    #'block': [' {}', Key('left enter enter up tab')],
 
     'state if': ['if ()', Key('left')],
     'state else if': [' else if ()', Key('left')],
@@ -178,23 +128,12 @@ ctx.keymap({
     'state for': ['for ()', Key('left')],
     'state switch': ['switch ()', Key('left')],
 
-    #'comment see': '// ',
-    #'comment are': '# ',
     'word to do': 'TODO: ',
     'word ref': 'REF',
-    # 'word down': 'down',
-    # 'word up': 'up',
-    # 'word left': 'left',
-    # 'word right': 'right',
 
     'word talon': 'talon',
     'word G L M M': 'GLMM',
     'word G L M': 'GLM',
-
-    #'dickt in it': ['{}', Key('left')],
-    #FIXME redefine# 'list in it': ['[]', Key('left')],
-    #FIXME redefine# 'string utf8': "'utf8'",
-    #'state past': 'pass',
 
     'plus': '+',
     'op (equal | equals)': ' = ',
@@ -203,13 +142,13 @@ ctx.keymap({
     'op (plus | add)': ' + ',
     'op (times | asterisk | star)': ' * ',
     'op divide': ' / ',
-    #'op comma': ', ',
+    'op comma': ', ',
     #'op mod': ' % ',
-    #'[op] (minus | subtract) equals': ' -= ',
-    #'[op] (plus | add) equals': ' += ',
-    #'[op] (times | multiply) equals': ' *= ',
-    #'[op] divide equals': ' /= ',
-    #'[op] mod equals': ' %= ',
+    'op (minus | subtract) equals': ' -= ',
+    'op (plus | add) equals': ' += ',
+    'op (times | multiply) equals': ' *= ',
+    'op divide equals': ' /= ',
+    'op mod equals': ' %= ',
 
     '(op | is) tilde': ' ~ ',
     '(op | is) greater than': ' > ',
@@ -246,15 +185,12 @@ ctx.keymap({
     'app next': Key('cmd-tab'),
     'app last': Key('cmd-shift-tab'),
     'tab next': Key('ctrl-tab'),
-    'tab (preev|previous)': Key('ctrl-shift-tab'),
+    'tab last': Key('ctrl-shift-tab'),
     'tab new': Key('cmd-t'),
 
     'scroll down': [Key('down')] * 30,
     'scroll up': [Key('up')] * 30,
 
-    # 'copy that': Key('cmd-c'),
-    # 'cut that': Key('cmd-x'),
-    # 'paste that': Key('cmd-v'),
     'Alfred paste': Key('cmd-shift-v'),
     'Alfred paste that': [Key('cmd-shift-v'), lambda m: time.sleep(0.1), Key('enter')],
     'Alfred go to': [Key('cmd-space'), lambda m: time.sleep(0.1), Key('space')],
@@ -268,8 +204,6 @@ ctx.keymap({
     'select start': Key('cmd-shift-left'),
     'select end': Key('cmd-shift-right'),
     'select word': [Key('alt-left'), Key('alt-shift-right')],
-    # 'select right': Key('shift-right'),
-    # 'select left': Key('shift-left'),
 
     # 'jump word [right]': Key('alt-right'),
     # 'jump word left': Key('alt-left'),
@@ -310,6 +244,4 @@ ctx.keymap({
     'release option command': lambda m: (
         ctrl.key_press('cmd', cmd=True, alt=True, up=True),
     ),
-
-
 })
