@@ -25,7 +25,7 @@ ctx.keymap(
         "run get clone": "git clone ",
         "run get commit": "git commit ",
         "run get commit message": ['git commit -m ""', Key("left")],
-        "run get diff": "git diff/n",
+        "run get diff": "git diff\n",
         "run get fetch": "git fetch\n",
         "run get grep": "git grep ",
         "run get in it": "git init\n",
