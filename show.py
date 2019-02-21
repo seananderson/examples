@@ -96,7 +96,7 @@ templates = {
 def show_alphabet(_):
         alphabet = list(zip(basic_keys.alpha_alt, string.ascii_lowercase))
 
-        webview_context.keymap({'(0 | quit | exit | escape)': lambda x: close_webview()})
+        webview_context.keymap({'(show quit | show exit | show escape)': lambda x: close_webview()})
         webview_context.load()
 
         webview.render(templates['alpha'], alphabet=alphabet)
@@ -114,7 +114,7 @@ def show_contexts(_):
         contexts = OrderedDict()
 
         keymap = {
-                '(0 | quit | exit | escape)': lambda x: close_webview(),
+                '(show quit | show exit | show escape)': lambda x: close_webview(),
         }
 
         # grab all contexts and bind each to numbers (only for the webview)
