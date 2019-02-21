@@ -120,11 +120,23 @@ def join_words(words, sep=" "):
     # print(out)
     return out
 
+last_insert = ""
+
 def insert(s):
+    global last_insert
+    last_insert = s
     Str(s)(None)
 
+
+def select_last_insert(_):
+    for _ in range(len(last_insert)):
+        press("left")
+    for _ in range(len(last_insert)):
+        press("shift-right")
+
 def text(m):
-    insert(join_words(parse_words(m)))
+    text = join_words(parse_words(m))
+    insert(text)
 
 def spoken_text(m):
     insert(join_words(parse_words(m, True)))
