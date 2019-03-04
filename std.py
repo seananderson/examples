@@ -20,8 +20,8 @@ formatters = {
     'jive':      (True,  lambda i, word, _: word.lower() if i == 0 else '-'+word.lower()),
     'titlecase': (False, lambda i, word, _: word.capitalize()),
     'uppercase': (False, lambda i, word, _: word.upper()),
-    'double-string': (False, surround('"')),
-    'single-string': (False, surround("'")),
+    'quote': (False, surround('"')),
+    # 'single-quote': (False, surround("'")),
     'padded':    (False,     surround(" ")),
     'dotify':    (True,  lambda i, word, _: word.lower() if i == 0 else '.'+word.lower()),
     'thrack':    (True,  lambda i, word, _: word.lower()[0:3]), # first 3 letters of word
