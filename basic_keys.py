@@ -35,7 +35,7 @@ alternate_keys = {
 }
 symbols = {
     'back tick': '`',
-    'comma': ',',
+    ',': ',',
     'dot': '.', 'period': '.',
     'semi': ';', 'semicolon': ';',
     'quote': "'",
