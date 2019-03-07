@@ -4,15 +4,19 @@ from .utils import insert
 
 # alpha_alt = 'air bat cap drum each fine gust harp sit jury crunch look made near odd pit quench red sun trap urge vest whale plex yank zip'.split()
 # alpha_alt = 'arch bat char drum echo fox golf hotel ice juliet kilo lug mike nerb ork pooch queen romeo souk tango urge victor whiskey plex yank zip'.split()
-alpha_alt = 'arch bat char drum echo fox golf hotel ice jury kilo lug mike nerb ork pooch queen romeo souk tango unk victor whiskey plex yank zip'.split()
+alpha_alt = 'air bat char drum echo fox golf hotel ice jury kilo lug mike nerb ork pooch queen romeo souk tango unk victor whiskey plex yank zip'.split()
 alpha_alt2 = [
-    ('air',    'a'), 
+    # ('air',    'a'), 
     ('gust',   'g'), 
+    ('fine',   'f'), 
     ('harp',   'h'), 
     ('jury',   'j'), 
     ('crunch', 'k'), 
+    ('look',   'l'), 
     ('near',   'n'), 
     ('odd',    'o'), 
+    ('pit',    'p'), 
+    ('quench', 'q'), 
     ('red',    'r'),
     ('trap',   't'), 
     ('urge',   'u'), 
