@@ -13,6 +13,7 @@ alpha_alt2 = [
     ('fine',   'f'), 
     ('harp',   'h'), 
     ('jury',   'j'), 
+    ('sit',    'i'),
     ('crunch', 'k'), 
     ('look',   'l'), 
     ('near',   'n'), 
@@ -20,6 +21,7 @@ alpha_alt2 = [
     ('pit',    'p'), 
     ('quench', 'q'), 
     ('red',    'r'),
+    ('sun',    's'),
     ('trap',   't'), 
     ('urge',   'u'), 
     ('vest',   'v')]
