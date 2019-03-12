@@ -6,7 +6,9 @@ from .utils import insert
 # alpha_alt = 'arch bat char drum echo fox golf hotel ice juliet kilo lug mike nerb ork pooch queen romeo souk tango urge victor whiskey plex yank zip'.split()
 alpha_alt = 'air bat char drum echo fox golf hotel ice jury kilo lug mike nerb ork pooch queen romeo souk tango unk victor whiskey plex yank zip'.split()
 alpha_alt2 = [
-    # ('air',    'a'), 
+    ('air',    'a'),
+    ('kip',    'c'),
+    ('each',   'e'),
     ('gust',   'g'), 
     ('fine',   'f'), 
     ('harp',   'h'), 
