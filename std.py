@@ -72,9 +72,9 @@ ctx.keymap({
     # 'say <dgndictation> [over]': [text, ' '],
     # 'cap <dgndictation> [over]': [sentence_text, ' '],
     'calmer <dgndictation> [over]': [', ', text],
-    'period <dgndictation> [over]': ['. ', sentence_text],
-    # 'and say <dgndictation> [over]': [' ', text],
-    # 'and sentence <dgndictation> [over]': [' ', sentence_text],
+    # 'period <dgndictation> [over]': ['. ', sentence_text],
+    'and say <dgndictation> [over]': [' ', text],
+    'and cap <dgndictation> [over]': [' ', sentence_text],
     'word <dgnwords>': word,
     '(%s)+ [<dgndictation>]' % (' | '.join(formatters)): FormatText,
 
