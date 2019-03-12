@@ -89,7 +89,7 @@ ctx.keymap({
 
     'slap': Key('enter'),
     'slap that': [Key('cmd-right'), lambda m: time.sleep(0.05), Key('enter')],
-    '(escape | scape)': Key('esc'),
+    '(escape | scape | cape)': Key('esc'),
     'quest mark': '?',
     'tilde': '~',
     'backtick': '`',
