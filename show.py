@@ -209,7 +209,7 @@ def show_commands(context):
                 mapping.append((trigger, format_action(action),))
 
         keymap = {
-                '(quit | exit)': lambda x: close_webview(),
+                '(show quit | show exit)': lambda x: close_webview(),
                 'up': Key('pgup'),
                 'down': Key('pgdown'),
         }
@@ -249,9 +249,9 @@ def show_commands(context):
 
 
 keymap = {
-        'show alphabet': show_alphabet,
-        'show [commands] <dgndictation>': find_and_show,
-        'show context': show_contexts,
+        'talon show alphabet': show_alphabet,
+        # 'talon show [commands] <dgndictation>': find_and_show,
+        'talon show context': show_contexts,
 }
 
 ctx.keymap(keymap)
