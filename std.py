@@ -129,6 +129,7 @@ ctx.keymap({
     'state switch': ['switch ()', Key('left')],
 
     'word to do': 'TODO: ',
+    'word fix me': 'FIXME: ',
     'word ref': 'REF',
 
     'word talon': 'talon',
