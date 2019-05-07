@@ -83,6 +83,8 @@ ctx.keymap({
     "cut that": Key("cmd-x"),
     "copy that": Key("cmd-c"),
     "paste that": Key("cmd-v"),
+    "undo that": Key("cmd-z"),
+    "redo that": Key("cmd-shift-z"),
 
     'kill': Key('delete'),
     'chuck': Key('backspace'),
