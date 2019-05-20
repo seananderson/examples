@@ -34,7 +34,8 @@ f_keys = {f'F {i}': f'f{i}' for i in range(1, 13)}
 arrows = ['left', 'right', 'up', 'down']
 simple_keys = [
     'tab', 'escape', 'enter', 'space',
-    'home', 'pageup', 'pagedown', 'end',
+    # 'home', 'pageup', 'pagedown', 'end',
+    'pageup', 'pagedown',
 ]
 alternate_keys = {
     'delete': 'backspace',
