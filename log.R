@@ -8,7 +8,8 @@ d %>%
   group_by(phrase) %>%
   summarize(n = n()) %>%
   arrange(-n) %>%
-  top_n(10)
+  top_n(50) %>%
+  as.data.frame()
 
 d <- d %>% mutate(time_difference = c(NA, date[-1] - date[-length(date)])) %>%
   mutate(short_difference = time_difference < 3) %>%
