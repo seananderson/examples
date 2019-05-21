@@ -10,7 +10,7 @@ alpha_alt = 'air bat cop drum each fine gust harp sit jury crunch look made near
 
 alpha_alt2 = [
 #     ('air',    'a'),
-    ('char',    'c'),
+#     ('char',    'c'),
 #     ('each',   'e'),
 #     ('gust',   'g'),
 #     ('fine',   'f'),
