@@ -201,6 +201,7 @@ ctx.keymap({
     'Alfred launch': Key('cmd-space'),
     # 'undo that': Key('cmd-z'),
     'redo that': Key('cmd-shift-z'),
+    'save that': Key('cmd-s'),
     'insert dfo signature': '---=', # keyboard shortcut for my e-mail signature
 
      # Selecting text
