@@ -16,7 +16,7 @@ alpha_alt2 = [
 #     ('fine',   'f'),
 #     ('harp',   'h'),
 #     ('jury',   'j'),
-    ('ice',    'i')]
+#     ('ice',    'i')]
 #     ('crunch', 'k'),
 #     ('look',   'l'),
 #     ('near',   'n'),
