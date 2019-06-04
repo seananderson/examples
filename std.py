@@ -221,6 +221,7 @@ ctx.keymap({
     'page down': Key('pagedown'),
 
     "mac toggle dock": Key("cmd-alt-d"),
+    "word (jenny|chani)": "chani",
 
     'copy active bundle': copy_bundle,
 
