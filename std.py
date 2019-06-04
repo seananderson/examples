@@ -210,6 +210,11 @@ ctx.keymap({
     'select end': Key('cmd-shift-right'),
     'select word': [Key('alt-left'), Key('alt-shift-right')],
 
+    'delete line': [Key('cmd-right cmd-shift-left'), Key('delete')],
+    'delete start': [Key('cmd-shift-left'), Key('delete')],
+    'delete end': [Key('cmd-shift-right'), Key('delete')],
+    'delete word': [Key('alt-left'), Key('alt-shift-right'), Key('delete')],
+
     # 'jump word [right]': Key('alt-right'),
     # 'jump word left': Key('alt-left'),
 
