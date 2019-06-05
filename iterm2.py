@@ -41,6 +41,6 @@ ctx.keymap(
         "run get tag": "git tag ",
         "run get stash": "git stash ",
         "run get commit all": "git commit -av\n",
-        "run get word-diff": "git diff --color-words\n",
+        "run get diff color words": "git diff --color-words ",
     }
 )
