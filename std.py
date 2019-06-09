@@ -13,19 +13,19 @@ def CursorText(s):
   return [left + right, Key(' '.join(['left'] * len(right)))]
 
 formatters = {
-    'camel':     (True,  lambda i, word, _: word if i == 0 else word.capitalize()),
+    # 'camel':     (True,  lambda i, word, _: word if i == 0 else word.capitalize()),
     'score':     (True,  lambda i, word, _: word if i == 0 else '_'+word.lower()),
     'smash':     (True,  lambda i, word, _: word.lower()),
-    'jumble':    (True,  lambda i, word, _: word.lower()),
+    # 'jumble':    (True,  lambda i, word, _: word.lower()),
     'jive':      (True,  lambda i, word, _: word.lower() if i == 0 else '-'+word.lower()),
     'titlecase': (False, lambda i, word, _: word.capitalize()),
     'uppercase': (False, lambda i, word, _: word.upper()),
-    'quote': (False, surround('"')),
+    # 'quote': (False, surround('"')),
     # 'single-quote': (False, surround("'")),
-    'padded':    (False,     surround(" ")),
-    'dotify':    (True,  lambda i, word, _: word.lower() if i == 0 else '.'+word.lower()),
-    'thrack':    (True,  lambda i, word, _: word.lower()[0:3]), # first 3 letters of word
-    'quattro':   (True,  lambda i, word, _: word.lower()[0:4]), # first 4 ...
+    # 'padded':    (False,     surround(" ")),
+    # 'dotify':    (True,  lambda i, word, _: word.lower() if i == 0 else '.'+word.lower()),
+    # 'thrack':    (True,  lambda i, word, _: word.lower()[0:3]), # first 3 letters of word
+    # 'quattro':   (True,  lambda i, word, _: word.lower()[0:4]), # first 4 ...
     'acronym':   (True,  lambda i, word, _: word[0:1].upper()),
 }
 
@@ -71,7 +71,7 @@ ctx.keymap({
     'cap <dgndictation> [over]': sentence_text,
     # 'say <dgndictation> [over]': [text, ' '],
     # 'cap <dgndictation> [over]': [sentence_text, ' '],
-    'calmer <dgndictation> [over]': [', ', text],
+    # 'calmer <dgndictation> [over]': [', ', text],
     # 'period <dgndictation> [over]': ['. ', sentence_text],
     'and say <dgndictation> [over]': [' ', text],
     'and cap <dgndictation> [over]': [' ', sentence_text],
@@ -90,8 +90,8 @@ ctx.keymap({
     'chuck': Key('backspace'),
 
     'slap': Key('enter'),
-    'slap that': [Key('cmd-right'), lambda m: time.sleep(0.05), Key('enter')],
-    '(escape | scape | cape)': Key('esc'),
+    # 'slap that': [Key('cmd-right'), lambda m: time.sleep(0.05), Key('enter')],
+    '(escape | scape)': Key('esc'),
     'quest mark': '?',
     'tilde': '~',
     'backtick': '`',
@@ -118,26 +118,26 @@ ctx.keymap({
     'apostrophe': "'",
     'quote single': "'",
     # 'calm': ',',
-    'calmer': ', ',
+    # 'calmer': ', ',
     '(dot dot dot | dotdotdot)': '...',
-    '(dot dot | dotdot)': '..',
+    # '(dot dot | dotdot)': '..',
 
     'args': ['()', Key('left')],
 
-    'state if': ['if ()', Key('left')],
-    'state else if': [' else if ()', Key('left')],
-    'state while': ['while ()', Key('left')],
-    'state for': ['for ()', Key('left')],
-    'state switch': ['switch ()', Key('left')],
+    # 'state if': ['if ()', Key('left')],
+    # 'state else if': [' else if ()', Key('left')],
+    # 'state while': ['while ()', Key('left')],
+    # 'state for': ['for ()', Key('left')],
+    # 'state switch': ['switch ()', Key('left')],
 
-    'word to do': 'TODO: ',
-    'word fix me': 'FIXME: ',
-    'word ref': 'REF',
+    # 'word to do': 'TODO: ',
+    # 'word fix me': 'FIXME: ',
+    # 'word ref': 'REF',
 
-    'word talon': 'talon',
-    'word G L M M': 'GLMM',
+    # 'word talon': 'talon',
+    # 'word G L M M': 'GLMM',
     'word deeplier': 'dplyr',
-    'word G L M': 'GLM',
+    # 'word G L M': 'GLM',
 
     'plus': '+',
     'op (equal | equals)': ' = ',
@@ -183,7 +183,7 @@ ctx.keymap({
     'window close': Key('cmd-w'),
     'window last': Key('cmd-shift-`'),
     'window hide': Key('cmd-h'),
-    'window hide others': Key('cmd-alt-h'),
+    # 'window hide others': Key('cmd-alt-h'),
     #'quit that': Key('cmd-q'),
     #'save that': Key('cmd-s'),
     'app next': Key('cmd-tab'),
@@ -225,10 +225,10 @@ ctx.keymap({
     'page up': Key('pageup'),
     'page down': Key('pagedown'),
 
-    "mac toggle dock": Key("cmd-alt-d"),
-    "word (jenny|chani)": "chani",
+    # "mac toggle dock": Key("cmd-alt-d"),
+    # "word (jenny|chani)": "chani",
 
-    'copy active bundle': copy_bundle,
+    # 'copy active bundle': copy_bundle,
 
      # The following gives you 1 second to hover your mouse over your application
      # of choice; adjust timing as desired or abort early with 'choose app'.
@@ -238,21 +238,21 @@ ctx.keymap({
         time.sleep(1.0),
         ctrl.key_press('cmd', cmd=True, up=True),
     ),
-    '(choose app|release app switcher|release command)': lambda m: (
-        ctrl.key_press('cmd', cmd=True, up=True),
-    ),
-    'hold app switcher': lambda m: (
-        ctrl.key_press('cmd', cmd=True, down=True),
-        press('tab'),
-    ),
-    'hold command': lambda m: (
-        ctrl.key_press('cmd', cmd=True, down=True),
-    ),
-    # Multiple cursors via mouse in Sublime Text and RStudio:
-    'hold option command': lambda m: (
-        ctrl.key_press('cmd', cmd=True, alt=True, down=True),
-    ),
-    'release option command': lambda m: (
-        ctrl.key_press('cmd', cmd=True, alt=True, up=True),
-    ),
+    # '(choose app|release app switcher|release command)': lambda m: (
+    #     ctrl.key_press('cmd', cmd=True, up=True),
+    # ),
+    # 'hold app switcher': lambda m: (
+    #     ctrl.key_press('cmd', cmd=True, down=True),
+    #     press('tab'),
+    # ),
+    # 'hold command': lambda m: (
+    #     ctrl.key_press('cmd', cmd=True, down=True),
+    # ),
+    # # Multiple cursors via mouse in Sublime Text and RStudio:
+    # 'hold option command': lambda m: (
+    #     ctrl.key_press('cmd', cmd=True, alt=True, down=True),
+    # ),
+    # 'release option command': lambda m: (
+    #     ctrl.key_press('cmd', cmd=True, alt=True, up=True),
+    # ),
 })

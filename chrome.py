@@ -24,33 +24,33 @@ chromemap.update({
     "go to my github" : [Key("escape escape cmd-l"), "https://github.com/seananderson", Key("enter")],
     })
 
-chromemap.update({
-    'mort' : 'd',
-    'lest' : 'u',
-    'tab close' : Key('cmd-w'),
-    'run 1 password' : Key('cmd-\\'),
-    'goto address': Key('escape escape cmd-l'),
+# chromemap.update({
+    # 'mort' : 'd',
+    # 'lest' : 'u',
+    # 'tab close' : Key('cmd-w'),
+    # 'run 1 password' : Key('cmd-\\'),
+    # 'goto address': Key('escape escape cmd-l'),
     # 'mortar' : Key('alt-down'),
     # 'lesser' : Key('alt-up'),
     # 'out' : [Key('tab')]*25,
-    'links': Key('f'),
-    'new links': Key('F'), # Open link in new tab
-    'zoom in' : Key('cmd-='),
-    'zoom out' : Key('cmd+-'),
-    'pan left' : 'h'*4,
-    'pan right' : 'l'*4,
+    # 'links': Key('f'),
+    # 'new links': Key('F'), # Open link in new tab
+    # 'zoom in' : Key('cmd-='),
+    # 'zoom out' : Key('cmd+-'),
+    # 'pan left' : 'h'*4,
+    # 'pan right' : 'l'*4,
     # 'nex' : 'n',
     # 'bex' : 'N',
-    'tab search' : 'T',
-    'tab restore' : 'X',
+    # 'tab search' : 'T',
+    # 'tab restore' : 'X',
     # 'ruff' : Key("escape J"),
     # 'buff' : Key("escape K"),
-    'back' : 'H',
-    'forward' : 'L',
-    'refresh' : 'cmd-r',
-    'toggle bookmarks' : Key('cmd-shift-B'),
-    'show history' : Key('cmd-alt-b'),
-   })
+    # 'back' : 'H',
+    # 'forward' : 'L',
+    # 'refresh' : 'cmd-r',
+    # 'toggle bookmarks' : Key('cmd-shift-B'),
+    # 'show history' : Key('cmd-alt-b'),
+   # })
 
 ctx.keymap(chromemap)
 
