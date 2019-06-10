@@ -79,12 +79,20 @@ ctx.keymap({
     '(%s)+ [<dgndictation>]' % (' | '.join(formatters)): FormatText,
 
     'select last': select_last_insert,
+    "cut [that|it]": Key("cmd-x"),
+    "copy [that|it]": Key("cmd-c"),
+    "paste [that|it]": Key("cmd-v"),
+    "undo [that|it]": Key("cmd-z"),
+    "redo [that|it]": Key("cmd-shift-z"),
+    "del word right": Key("alt-delete"),
+    "del [this] word": Key("alt-backspace alt-delete"),
+    "select word left": Key("alt-shift-left"),
+    "select word right": Key("alt-shift-right"),
+    "select line left": Key("cmd-shift-left"),
+    "select line right": Key("cmd-shift-right"),
 
-    "cut that": Key("cmd-x"),
-    "copy that": Key("cmd-c"),
-    "paste that": Key("cmd-v"),
-    "undo that": Key("cmd-z"),
-    "redo that": Key("cmd-shift-z"),
+    "word M C right": "MC Wright and Associates Ltd.",
+    # ----------------------
 
     'kill': Key('delete'),
     'chuck': Key('backspace'),
@@ -105,6 +113,10 @@ ctx.keymap({
     'race': '}',
     'langle': '<',
     'rangle': '>',
+    'dasher': '–',
+    'break': '—',
+
+
 
     'asterisk': '*',
     'hash': '#',
@@ -201,7 +213,7 @@ ctx.keymap({
     'Alfred launch': Key('cmd-space'),
     # 'undo that': Key('cmd-z'),
     'redo that': Key('cmd-shift-z'),
-    'save that': Key('cmd-s'),
+    'save [that|it]': Key('cmd-s'),
     'insert dfo signature': '---=', # keyboard shortcut for my e-mail signature
 
      # Selecting text
@@ -256,3 +268,4 @@ ctx.keymap({
     #     ctrl.key_press('cmd', cmd=True, alt=True, up=True),
     # ),
 })
+
