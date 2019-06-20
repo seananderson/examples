@@ -84,14 +84,15 @@ ctx.keymap({
     "paste [that|it]": Key("cmd-v"),
     "undo [that|it]": Key("cmd-z"),
     "redo [that|it]": Key("cmd-shift-z"),
-    "del word right": Key("alt-delete"),
-    "del [this] word": Key("alt-backspace alt-delete"),
+    "delete word right": Key("alt-delete"),
+    "delete [this] word": Key("alt-backspace alt-delete"),
     "select word left": Key("alt-shift-left"),
     "select word right": Key("alt-shift-right"),
     "select line left": Key("cmd-shift-left"),
     "select line right": Key("cmd-shift-right"),
 
     "word M C right": "MC Wright and Associates Ltd.",
+    "word flyn row": "MFLNRORD",
     # ----------------------
 
     'kill': Key('delete'),
