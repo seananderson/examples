@@ -139,6 +139,10 @@ ctx.keymap({
     'word deeplier': 'dplyr',
     'word G L M': 'GLM',
 
+    'cap filina': 'Philina',
+    'word filina': 'Philina',
+    'word sacha': 'Sacha',
+
     'plus': '+',
     'op (equal | equals)': ' = ',
     'equals': '=',
