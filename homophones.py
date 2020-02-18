@@ -246,9 +246,9 @@ def homophones_help(m):
 
 context.keymap({
     '(phones | homophones) help': homophones_help,
-    'phones {homophones.canonical}': raise_homophones,
-    'phones': lambda m: raise_homophones(m, is_selection=True),
-    'force phones {homophones.canonical}': lambda m: raise_homophones(m, force_raise=True),
-    'force phones': lambda m: raise_homophones(m, force_raise=True, is_selection=True),
+    #'phones {homophones.canonical}': raise_homophones,
+    'phones that': lambda m: raise_homophones(m, is_selection=True),
+    #'force phones {homophones.canonical}': lambda m: raise_homophones(m, force_raise=True),
+    #'force phones': lambda m: raise_homophones(m, force_raise=True, is_selection=True),
 })
 context.set_list('canonical', canonical)
