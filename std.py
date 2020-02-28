@@ -236,6 +236,12 @@ ctx.keymap({
     "cap sasha": "Sacha",
     "cap robin": "Robyn",
 
+    "reference figure": ["Figure \@ref(fig:)", Key("left")],
+    "reference table": ["Table \@ref(tab:)", Key("left")],
+    "reference equation": ["Equation \@ref(eq:)", Key("left")],
+    "reference section": ["Section \@ref(sec:)", Key("left")],
+    "reference appendix": ["Appendix \@ref(app:)", Key("left")],
+
     'copy active bundle': copy_bundle,
 
      # The following gives you 1 second to hover your mouse over your application
