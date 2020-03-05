@@ -64,6 +64,7 @@
     "rexall": "rexsole",
     "perimeter": "parameter",
     "satisfies": "satisficed",
+    "satisfy thing": "satisficing",
     "quanto": "quantile",
     "quintile": "quantile",
     "quintiles": "quantiles",
@@ -74,5 +75,8 @@
     "invasion": "Bayesian",
     "beijing": "Bayesian",
     "Beijing": "Bayesian",
-    "catch ability": "catchability"
+    "catch ability": "catchability",
+    "soul": "sole",
+    "text with": "textwidth",
+    "text width": "textwidth"
 }
